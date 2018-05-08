@@ -2,18 +2,18 @@
 Railroad Database For CSC 336
 CSC 336 Spring 2018 Railroad Project Version 1
 #The project consists of two parts.
-    1)	All teams will create a basic railroad between Washington and Boston with trains, stations, 
-        train schedules, passengers and a simple reservation system. You can call it whatever you want, 
-        just not Amtrak.We have thoroughly discussed the data modeling for the railroad in class, and 
-        used it on the mid-term exam.
+    (1)  All teams will create a basic railroad between Washington and Boston with trains, stations, 
+         train schedules, passengers and a simple reservation system. You can call it whatever you want, 
+         just not Amtrak.We have thoroughly discussed the data modeling for the railroad in class, and 
+         used it on the mid-term exam.
 
-        We will go back to using MariaDB on the “slow” server for lab work because the Web Server and 
-        programming tools are installed there.
+         We will go back to using MariaDB on the “slow” server for lab work because the Web Server and 
+         programming tools are installed there.
 
-        To save time, I have given your teams select access to two versions of the railroad database 
-        developed by students last spring. They are called “railroad1” and “railroad3” and are similar 
-        but not identical.  Look for them on MariaDB10.  You can use these pretty much “as is” for the 
-        basic reservation system GUI.
+         To save time, I have given your teams select access to two versions of the railroad database 
+         developed by students last spring. They are called “railroad1” and “railroad3” and are similar 
+         but not identical.  Look for them on MariaDB10.  You can use these pretty much “as is” for the 
+         basic reservation system GUI.
 
     (2)  Each team will choose one of 7 enhancements to the railroad such as extending the line north and
          south, implementing differential fare schedules, implementing additional express trains, 
@@ -21,10 +21,10 @@ CSC 336 Spring 2018 Railroad Project Version 1
          use the sample schemas and data in “railroad1” or “railroad3” you will need to add either data, 
          or additional tables, or both.
          I suggest that you divide the labor among your team members along these lines:
-    (1)	Creating and testing the database manipulation routines
-    (2)	Creating and testing the GUI
-    (3)	Creating users, passengers, trips and reservations; filling up trains
-    (4)	Managing the project, writing reports, managing repositories.
+            (1)	Creating and testing the database manipulation routines
+            (2)	Creating and testing the GUI
+            (3)	Creating users, passengers, trips and reservations; filling up trains
+            (4)	Managing the project, writing reports, managing repositories.
     
     Your progress report and final submission must specify what each team member contributed, which will 
     likely be to more than one of the 4 divisions.
@@ -41,50 +41,54 @@ CSC 336 Spring 2018 Railroad Project Version 1
 #   Requirements of the basic railroad:
     
     (1)	Implement data structures including tables and high level language constructs to model
-    a.	Trains
-    b.	Stations
-    c.	Stops that each train makes with arrival and departure times
-    d.	A means of recording what segments of the route each passenger books
-    e.	A record of how many seats are sold (or are free) for each segment of the route
-    f.	A record of passenger reservations up to a year in advance.
+        a. Trains
+        b. Stations
+        c. Stops that each train makes with arrival and departure times
+        d. A means of recording what segments of the route each passenger books
+        e. A record of how many seats are sold (or are free) for each segment of the route
+        f. A record of passenger reservations up to a year in advance.
 
     (2)	Parameters and simplifications
-    a.	Washington and Boston are termini; include all intermediate stops as on the actual Northeast Regional.         Use reasonable time intervals between stops.
-    b.	Each train has 7 passenger cars with 64 seats in each.
-    c.	Calculate the price per segment based on time or mileage between stations
-    d.	Create 8 trains per day in each direction (northbound and southbound), 3 morning, 3 afternoon, 2 evenin    g.  Use different train numbers for each train, and different schedules/numbers on weekends.
-    e.	For the basic reservation system:
-            i.	Assume that the trip is continuous with no gaps or stopovers
-            ii.	Assume only one fare class
-            iii.	Assume booking for one person only
-            iv.	Assume cancel and rebook, not modified reservation
-            v.	For each calendar year, publish one schedule 6 months in advance. 
-            vi.	Delete or otherwise mark off completed train/dates and passenger trips.
-    f.	The Reservation GUI and high level programming can be implemented in a variety of languages and 
-        platforms.  You can use PHP, node.js ,Python CGI or Java Swing with Xwindows in the lab, or you 
-        can use Python with Django or PHP or node.js on the Google Cloud Platform.  The result must be 
-        available on a publicly accessible web site, whether in the lab or on GCP.  It is not acceptable 
-        to present the result on your laptop, or to expect me to install products on my laptop or office 
-        system.  It is also not acceptable to use SQLLite or another not-fully-functional DBMS.
+        a.	Washington and Boston are termini; include all intermediate stops as on the actual Northeast 
+            Regional. Use reasonable time intervals between stops.
+        b.	Each train has 7 passenger cars with 64 seats in each.
+        c.	Calculate the price per segment based on time or mileage between stations
+        d.	Create 8 trains per day in each direction (northbound and southbound), 3 morning, 3 afternoon, 
+            2 evening. Use different train numbers for each train, and different schedules/numbers on weekends.
+        e.	For the basic reservation system:
+                i.	Assume that the trip is continuous with no gaps or stopovers
+                ii.	Assume only one fare class
+                iii. Assume booking for one person only
+                iv.	Assume cancel and rebook, not modified reservation
+                v.	For each calendar year, publish one schedule 6 months in advance. 
+                vi.	Delete or otherwise mark off completed train/dates and passenger trips.
+        f.	The Reservation GUI and high level programming can be implemented in a variety of languages and 
+            platforms.  You can use PHP, node.js ,Python CGI or Java Swing with Xwindows in the lab, or you 
+            can use Python with Django or PHP or node.js on the Google Cloud Platform.  The result must be 
+            available on a publicly accessible web site, whether in the lab or on GCP.  It is not acceptable 
+            to present the result on your laptop, or to expect me to install products on my laptop or office 
+            system.  It is also not acceptable to use SQLLite or another not-fully-functional DBMS.
 
-    i.	The Reservation GUI should display available trains for the passenger’s itinerary and choice of 
-        date and morning, afternoon or evening.  That is, if some portion of a trip from New York to New 
-        Haven is booked up, then that is unavailable and other trains should be displayed. From the displayed
-        trains, the user should make a choice, then be directed to a reservation screen. 
-    ii.	In the basic railroad, there is no assigned seating. Just book the whole train until it fills up 
-        (i.e keep track of free seats for each segment). Of course, some segments may fill up before others. 
-        Be sure to simulate the condition in which segments are full.
-    iii.The Reservation page of the GUI should record a passenger’s name and some payment method, providing a 
-        unique passenger ID and a unique ticket number. 
-    iv.	The Reservation GUI should be able to display a passenger’s reservation and allow for cancellation 
-        and rebook. Do not bother with penalties or surcharges for the basic system.
-    g.	Concurrency control.  You will need to protect the routine that makes the actual reservations from 
-        interleaving.  You can do this with a mutex in a high level language or with an exclusive lock or 
-        a transaction isolation level in MySQL. I will help you with either approach. The reason for some 
-        kind of concurrency control is that you do not want an available trip to disappear between the time 
-        the user chooses it and the time the reservation is actually made – two separate passes through 
-        “seats_free”. 
+                i.	The Reservation GUI should display available trains for the passenger’s itinerary and 
+                    choice of date and morning, afternoon or evening.  That is, if some portion of a trip 
+                    from New York to New Haven is booked up, then that is unavailable and other trains should 
+                    be displayed. From the displayed trains, the user should make a choice, then be directed 
+                    to a reservation screen. 
+                ii.	In the basic railroad, there is no assigned seating. Just book the whole train until it 
+                    fills up (i.e keep track of free seats for each segment). Of course, some segments may 
+                    fill up before others. Be sure to simulate the condition in which segments are full.
+                iii.The Reservation page of the GUI should record a passenger’s name and some payment method, 
+                    providing a unique passenger ID and a unique ticket number. 
+                iv.	The Reservation GUI should be able to display a passenger’s reservation and allow for 
+                    cancellation and rebook. Do not bother with penalties or surcharges for the basic system.
         
+        g.	Concurrency control.  You will need to protect the routine that makes the actual reservations from 
+            interleaving.  You can do this with a mutex in a high level language or with an exclusive lock or 
+            a transaction isolation level in MySQL. I will help you with either approach. The reason for some 
+            kind of concurrency control is that you do not want an available trip to disappear between the time 
+            the user chooses it and the time the reservation is actually made – two separate passes through 
+            “seats_free”. 
+            
 #    Enhancements (each team chooses one):
     (1)	Generate passenger volume that fills up popular itineraries and times of day. Use some randomization 
         and batch inserts to do this.  Based on demand, create new trains to meet the demand.  These trains 

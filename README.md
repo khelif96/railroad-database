@@ -1,7 +1,7 @@
 # railroad-database
 Railroad Database For CSC 336
 CSC 336 Spring 2018 Railroad Project Version 1
-#The project consists of two parts.
+# The project consists of two parts.
     (1)  All teams will create a basic railroad between Washington and Boston with trains, stations, 
          train schedules, passengers and a simple reservation system. You can call it whatever you want, 
          just not Amtrak.We have thoroughly discussed the data modeling for the railroad in class, and 

@@ -1,23 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import MenuItem from 'material-ui/Menu/MenuItem';
-import TextField from 'material-ui/TextField';
-
-const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-    },
-    menu: {
-        width: 200,
-    },
-});
+import {Input,Container} from '../styles/Reservation.style';
+import {Grid,Paper, Button} from 'material-ui';
+import AvailableTrains from '../components/AvailableTrains.js'
 
 class Reservation extends Component {
 
@@ -29,7 +15,12 @@ class Reservation extends Component {
             origin: '',
             destination: '',
             date: '',   //probably in JAVA date format NO TIME
+            time : '',
+            expandTrainSchedule : false,
         };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+
     };
 
     handleChange = name => event => {
@@ -37,61 +28,88 @@ class Reservation extends Component {
             [name]: event.target.value,
         });
     };
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.setState({
+            expandTrainSchedule : !this.state.expandTrainSchedule,
+        })
+    }
+    
 
     render() {
-        const { classes } = this.props;
+        /* Grid container acts as a whole row, and the item are its enteries */
+        console.log(this.state.expandTrainSchedule + " from reservation")
         return (
-            <form className={classes.container} noValidate autoComplete="off">
-                <TextField
-                    required
-                    id="firstName"
-                    label="First Name"
-                    className={classes.textField}
-                    value={this.state.firstName}
-                    onChange={this.handleChange('firstName')}
-                    margin="normal"
-                />
-                <TextField
-                    required
-                    id="lastName"
-                    label="Last Name"
-                    className={classes.textField}
-                    value={this.state.lastName}
-                    onChange={this.handleChange('lastName')}
-                    margin="normal"
-                />
-                <TextField
-                    required
-                    id="origin"
-                    label="From"
-                    className={classes.textField}
-                    value={this.state.origin}
-                    onChange={this.handleChange('origin')}
-                    margin="normal"
-                />
-                <TextField
-                    required
-                    id="destination"
-                    label="To"
-                    className={classes.textField}
-                    value={this.state.destination}
-                    onChange={this.handleChange('destination')}
-                    margin="normal"
-                />
-                <TextField
-                    id="date"
-                    label="Date"
-                    type="date"
-                    className={classes.textField}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    margin="normal"
-                />
-            </form>
+            <Container>
+                <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
+                    <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
+                        <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
+                            
+                                <Grid item xs>
+                                    <Input
+                                        required
+                                        id="origin"
+                                        label="From"
+                                        value={this.state.origin}
+                                        onChange={this.handleChange('origin')}
+                                    />
+                                </Grid>
+                                <Grid item xs>
+                                    
+                                    <Input
+                                        required
+                                        id="destination"
+                                        label="To"
+                                        value={this.state.destination}
+                                        onChange={this.handleChange('destination')}
+                                    />
+                                </Grid>
+                        </Grid>
+                        <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
+                                <Grid item xs>
+                                    <Input
+                                        id="date"
+                                        label="Date"
+                                        type="date"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item xs>
+                                    <Input
+                                        id="time"
+                                        label="Time Of Departure"
+                                        type="time"
+                                        defaultValue="07:30"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        inputProps={{
+                                            step: 600, // 5 min
+                                        }}
+                                    />
+                                </Grid>
+                        
+                        </Grid>
+                        <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
+                                <Button type="submit" variant="raised" style={{color : 'white', backgroundColor : '#F44235'}}>Submit</Button>
+                        </Grid>
+                    </form>
+                    
+
+                    <Grid container justify="center" alignItems="center" spacing={16}> 
+                        <Grid item xs>
+                        <AvailableTrains expand={this.state.expandTrainSchedule}/>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                
+            </Container>
         );
     }
 }
 
 
-export default withStyles(styles)(Reservation);
+export default Reservation;

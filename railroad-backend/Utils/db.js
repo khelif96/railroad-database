@@ -21,7 +21,7 @@ if(process.env.host == undefined || process.env.user == undefined || process.env
       con.end();
       process.exit(1);
     };
-    console.log("Connected To Database");
+    console.log("Connected To Database with connection id " + con.threadId);
 
   })
   }

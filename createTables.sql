@@ -7,12 +7,12 @@ CREATE TABLE passengers (
   passenger_id int(11) NOT NULL AUTO_INCREMENT,
   fname varchar(30) DEFAULT NULL,
   lname varchar(100) DEFAULT NULL,
-  email varchar(100) DEFAULT NULL,
+  email varchar(100) unique DEFAULT NULL,
   password varchar(100) DEFAULT NULL,
   preferred_card_number varchar(16) DEFAULT NULL,
   preferred_billing_address varchar(100) DEFAULT NULL,
   PRIMARY KEY (passenger_id)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1; 
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 CREATE TABLE reservations (
   reservation_id int(11) NOT NULL AUTO_INCREMENT,
@@ -23,7 +23,7 @@ CREATE TABLE reservations (
   PRIMARY KEY (reservation_id),
   KEY paying_passenger_id (paying_passenger_id),
   CONSTRAINT reservations_ibfk_1 FOREIGN KEY (paying_passenger_id) REFERENCES passengers (passenger_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE stations (
   station_id int(11) NOT NULL AUTO_INCREMENT,
@@ -31,7 +31,7 @@ CREATE TABLE stations (
   station_symbol char(3) NOT NULL,
   PRIMARY KEY (station_id),
   UNIQUE KEY station_sym_ind (station_symbol)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1; 
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 CREATE TABLE segments (
   segment_id int(11) NOT NULL AUTO_INCREMENT,
@@ -43,7 +43,7 @@ CREATE TABLE segments (
   KEY seg_s_end (seg_s_end),
   CONSTRAINT segments_ibfk_1 FOREIGN KEY (seg_n_end) REFERENCES stations (station_id),
   CONSTRAINT segments_ibfk_2 FOREIGN KEY (seg_s_end) REFERENCES stations (station_id)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1; 
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 CREATE TABLE trains (
   train_id int(11) NOT NULL AUTO_INCREMENT,
@@ -56,7 +56,7 @@ CREATE TABLE trains (
   KEY train_end (train_end),
   CONSTRAINT trains_ibfk_1 FOREIGN KEY (train_start) REFERENCES stations (station_id),
   CONSTRAINT trains_ibfk_2 FOREIGN KEY (train_end) REFERENCES stations (station_id)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1; 
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 CREATE TABLE seats_free (
   train_id int(11) NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE seats_free (
   KEY segment_id (segment_id),
   CONSTRAINT seats_free_ibfk_1 FOREIGN KEY (segment_id) REFERENCES segments (segment_id),
   CONSTRAINT seats_free_ibfk_2 FOREIGN KEY (train_id) REFERENCES trains (train_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE stops_at (
   train_id int(11) NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE stops_at (
   KEY station_id (station_id),
   CONSTRAINT stops_at_ibfk_1 FOREIGN KEY (train_id) REFERENCES trains (train_id),
   CONSTRAINT stops_at_ibfk_2 FOREIGN KEY (station_id) REFERENCES stations (station_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE trips (
   trip_id int(11) NOT NULL AUTO_INCREMENT,
@@ -97,4 +97,4 @@ CREATE TABLE trips (
   CONSTRAINT trips_ibfk_2 FOREIGN KEY (trip_seg_ends) REFERENCES segments (segment_id),
   CONSTRAINT trips_ibfk_3 FOREIGN KEY (trip_train_id) REFERENCES trains (train_id),
   CONSTRAINT trips_ibfk_4 FOREIGN KEY (reservation_id) REFERENCES reservations (reservation_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

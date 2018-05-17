@@ -86,6 +86,18 @@ class NavBar extends React.Component {
                 Trains
               </Button>
             </Link>
+
+            {this.props.loggedIn ? 
+              (<Link to='/Login' className={classes.navItem}>
+                <Button  className={classes.navItem}>
+                  Login
+                </Button>
+              </Link>) :
+              (<Link to='/MyAccount' className={classes.navItem}>
+                  <Button  className={classes.navItem}>
+                    My Account
+                  </Button>
+              </Link>)}
             
           </Toolbar>
         </AppBar>

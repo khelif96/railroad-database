@@ -20,7 +20,6 @@ class Stations extends Component {
         })
     }
     render() {
-        
         return (
             <div>
                 {this.state.stations}

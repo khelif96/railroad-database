@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.43",
+    "axios": "^0.18.0",
     "classnames": "^2.2.5",
     "material-ui": "^1.0.0-beta.44",
     "material-ui-next": "^1.0.0-beta.44",
@@ -13,6 +14,8 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0",
     "styled-components": "^3.2.6",
     "typeface-roboto": "0.0.54"
   },

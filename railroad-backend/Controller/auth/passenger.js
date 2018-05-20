@@ -26,3 +26,29 @@ exports.registerPassenger = (req, res) => {
     }
 
   };
+
+
+  exports.loginPassenger = (req, res) => {
+    if(req.body.email == undefined || req.body.password == undefined){
+      res.json({error: "Missing required field in request"});
+    }else{
+      var findPassengerSql = 'select * from passengers where email = "' + req.body.email + '";';
+      con.query(findPassengerSql,function(error,results,fields){
+        if(error) res.status(500).json({error: error.code , message : "Database error"});
+        if(results.length > 0){
+          bcrypt.compare(req.body.password, results[0].password, function(err,match){
+            if(match){
+              res.status(200).json({message : "Successfuly Found User", api_key : results[0].api_key});
+            }else{
+              res.status(400).json({error : 'Password doesnt match', message : "Password does not match email address"});
+            }
+          });
+        }else{
+          res.status(400).json({error : "Could not find email", message : "Could not find matching email or password"});
+        }
+      })
+
+
+    }
+
+  };

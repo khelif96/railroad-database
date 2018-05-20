@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import {Input,Container} from '../styles/Reservation.style';
 import {Grid,Paper, Button, Typography} from 'material-ui';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
+import RegisterDialog from '../components/RegisterDialog';
 
-class MyAccount extends Component {
+class Login extends Component {
 
     constructor(props){
         super(props);
         this.state = {
+            openRegister : false,
             fname : "test first name",
             lname : "test last name",
             email : "test email",
@@ -55,7 +57,11 @@ class MyAccount extends Component {
                         <Grid item xs>
                             <Card>
                                 <CardContent> 
-                                    <Button > </Button>
+                                    <RegisterDialog
+                                        open={this.state.openRegister}
+                                        onClose={ (event) => {this.setState({openRegister : false})}}
+                                        aria-labelledby="form-dialog-title"
+                                    />
                                 </CardContent>
 
                             </Card>
@@ -69,4 +75,4 @@ class MyAccount extends Component {
 }
 
 
-export default MyAccount;
+export default Login;

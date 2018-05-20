@@ -1,0 +1,6 @@
+// Create a file called .env using the format below
+
+host=
+user=
+password=
+database=

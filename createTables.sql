@@ -11,6 +11,7 @@ CREATE TABLE passengers (
   password varchar(100) DEFAULT NULL,
   preferred_card_number varchar(16) DEFAULT NULL,
   preferred_billing_address varchar(100) DEFAULT NULL,
+  api_key varchar(25) default null,
   PRIMARY KEY (passenger_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 

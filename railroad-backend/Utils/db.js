@@ -1,6 +1,19 @@
 require('dotenv').config(); // Library to allow the importing of  enviromental variables in .env files
 var mysql = require('mysql');
 
+// If the Node process ends, close the mysql connection
+process.on('SIGINT', function() {
+if(con == undefined){
+  console.log("SIGNIT recieved Process Closing");
+  process.exit(0);
+}else{
+  con.end(function (err) {
+    console.log('mysql default connection disconnected through app termination');
+    process.exit(0);
+  });
+}
+});
+
 if(process.env.host == undefined || process.env.user == undefined || process.env.password == undefined){
   console.error("Could not find all the required enviromental variables");
   console.error("Did you create the .env file?");

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import {Input,Container} from '../styles/Reservation.style';
 import {Grid,Paper, Button} from 'material-ui';
 import AvailableTrains from '../components/AvailableTrains.js'
@@ -10,13 +8,14 @@ class Reservation extends Component {
     constructor(props){
         super(props);
         this.state = {
-            firstName: '2',
+            firstName: '',
             lastName: '',
             origin: '',
             destination: '',
             date: '',   //probably in JAVA date format NO TIME
             time : '',
             expandTrainSchedule : false,
+
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -74,6 +73,8 @@ class Reservation extends Component {
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
+                                        value={this.state.date}
+                                        onChange={this.handleChange('date')}
                                     />
                                 </Grid>
                                 <Grid item xs>
@@ -88,6 +89,8 @@ class Reservation extends Component {
                                         inputProps={{
                                             step: 600, // 5 min
                                         }}
+                                        value={this.state.time}
+                                        onChange={this.handleChange('time')}
                                     />
                                 </Grid>
                         
@@ -100,7 +103,15 @@ class Reservation extends Component {
 
                     <Grid container justify="center" alignItems="center" spacing={16}> 
                         <Grid item xs>
-                        <AvailableTrains expand={this.state.expandTrainSchedule}/>
+                            <AvailableTrains 
+                                expand={this.state.expandTrainSchedule} 
+                                firstName={this.state.firstName}
+                                lastName={this.state.lastName}
+                                origin={this.state.origin}
+                                destination={this.state.destination}
+                                date={this.state.date}
+                                time={this.state.time}/>
+
                         </Grid>
                     </Grid>
 

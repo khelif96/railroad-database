@@ -10,7 +10,7 @@ exports.registerPassenger = (req, res) => {
   if(req.body.fname == undefined || req.body.lname == undefined
     || req.body.email == undefined || req.body.password == undefined
     || req.body.preferred_card_number == undefined || req.body.preferred_billing_address == undefined ){
-      res.json({error: "Missing required field in request"});
+      res.json({error: "Missing required field in request with params : " + req.body.fname + req.body.lname});
     }else{
       let api_key = rack();
       bcrypt.hash(req.body.password, saltRounds, function(err, passwordHash){

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// react router
 import Routes from './Routes.js';
 import {
   BrowserRouter as Router,
@@ -9,8 +10,11 @@ import {
   Link
 } from 'react-router-dom'
 
+// material UI styling
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import {AppContainer} from './styles/container.js'
+
+// components
 import NavBar from './components/NavBar.js'
 
 // the universal style that is going to be applied throughout the app
@@ -33,7 +37,8 @@ class App extends Component {
   constructor(props){
       super(props);
       this.state = {
-
+          loggedIn : true,
+          api_key : "",
       };
   }
   render() {
@@ -41,7 +46,7 @@ class App extends Component {
     return (
     <Router>
       <MuiThemeProvider theme={theme}>
-        <NavBar/>
+        <NavBar loggedIn ={this.state.loggedIn}/>
         <AppContainer> <Routes/> </AppContainer>
       </MuiThemeProvider>
     </Router>

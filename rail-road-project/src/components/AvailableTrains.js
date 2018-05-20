@@ -8,16 +8,26 @@ class AvailableTrains extends Component {
     constructor(props){
         super(props);
         this.state = {
-
+            firstName: '',
+            lastName: '',
         }
     }
+    
     render() {
+        console.log(this.props);
         return (
             <div>
                 <Card>
                     <CardHeader title="Available Trains"/>
                     <Collapse in={this.props.expand} timeout="auto" unmountOnExit>
-                        <CardContent> here are the trains that will be Available</CardContent>
+                        <CardContent> 
+                            {this.props.firstName}
+                            {this.props.lastName}
+                            {this.props.origin}
+                            {this.props.destination}
+                            {this.props.date}
+                            {this.props.time}
+                        </CardContent>
                     </Collapse>
                 </Card>
                 

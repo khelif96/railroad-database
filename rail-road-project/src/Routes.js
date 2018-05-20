@@ -6,7 +6,8 @@ import Schedule from './scenes/Schedule.js'
 import Stations from './scenes/Stations.js'
 import Home from './scenes/Home.js'
 import Trains from './scenes/Trains.js'
-
+import MyAccount from './scenes/MyAccount.js'
+import Login from './scenes/Login.js'
 
 class Routes extends Component {
     render() {
@@ -17,6 +18,8 @@ class Routes extends Component {
                 <Route exact path = '/Schedule' component = {Schedule}/>
                 <Route exact path = '/Stations' component = {Stations} />
                 <Route exact path = '/Trains' component = {Trains} />
+                <Route exact path = '/MyAccount' component = {MyAccount} />
+                <Route exact path = '/Login' component = {Login} />
             </div>
         );
     }

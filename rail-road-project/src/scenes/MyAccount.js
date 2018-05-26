@@ -8,12 +8,13 @@ class MyAccount extends Component {
     constructor(props){
         super(props);
         this.state = {
-            fname : "test first name",
-            lname : "test last name",
-            email : "test email",
-            password : "test password",
-            preferred_card_number : "test card number",
-            preferred_billing_address : "test preferred billing address",
+            fname : "",
+            lname : "",
+            email : "",
+            password : "",
+            preferred_card_number : "",
+            preferred_billing_address : "",
+
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     };
@@ -30,22 +31,10 @@ class MyAccount extends Component {
         })
     }
     
-    /*componentDidMount(){
-        fetch('http://localhost:3001/api/stations')
-        .then( result => { 
-            return result.json()
-        }).then( data => {
-            this.setState({
-                fname : data.fname,
-                lname : data.lname,
-                email : data.email,
-                password : data.password,
-                preferred_card_number : data.preferred_card_number,
-                preferred_billing_address : data.preferred_billing_address,
-            })
-        })
+    componentDidMount(){
         
-    }*/
+        
+    }
 
     render() {
         return (

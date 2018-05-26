@@ -3,35 +3,42 @@ import {Input,Container} from '../styles/Reservation.style';
 import {Grid,Paper, Button, Typography} from 'material-ui';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import RegisterDialog from '../components/RegisterDialog';
+import {loginPassenger} from '../utils/auth';
+import TextField from '@material-ui/core/TextField';
 
 class Login extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            openRegister : false,
-            fname : "test first name",
-            lname : "test last name",
-            email : "test email",
-            password : "test password",
-            preferred_card_number : "test card number",
-            preferred_billing_address : "test preferred billing address",
+            email : "",
+            password : "",
+            canLogin : false,
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value,
+            canLogin : this.checkFields([
+                this.state.email,
+                this.state.password
+            ])
         });
     };
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.setState({
-            expandTrainSchedule : !this.state.expandTrainSchedule,
+
+    
+    loginUser = (event) => {
+        const EMAIL = this.state.email;
+        const PASSWORD = this.state.password;
+
+        loginPassenger(EMAIL,PASSWORD)
+        .then((api) => {
+            console.log(api)
+            this.props.history.push('/MyAccount')
         })
     }
-    
+
     /*componentDidMount(){
         fetch('http://localhost:3001/api/stations')
         .then( result => { 
@@ -49,6 +56,11 @@ class Login extends Component {
         
     }*/
 
+    checkFields = (fields) => {
+        const checkField = (field) => { return !(field == "") };
+        return fields.every(checkField);
+      }
+
     render() {
         return (
             <Container>
@@ -57,15 +69,37 @@ class Login extends Component {
                         <Grid item xs>
                             <Card>
                                 <CardContent> 
+                                   <TextField
+                                        required
+                                        autoFocus
+                                        margin="dense"
+                                        id="email"
+                                        label="Email Address"
+                                        value={this.state.email}
+                                        onChange={this.handleChange('email')}
+                                        fullWidth
+                                    />
+                                    <TextField
+                                        required
+                                        margin="dense"
+                                        id="password"
+                                        label="Password"
+                                        value={this.state.password}
+                                        onChange={this.handleChange('password')}
+                                        fullWidth
+                                    />
+                                      
+                                    <Button disabled={!this.state.canLogin} onClick={this.loginUser} color="primary">
+                                        Login
+                                    </Button>
+
                                     <RegisterDialog
                                         open={this.state.openRegister}
                                         onClose={ (event) => {this.setState({openRegister : false})}}
                                         aria-labelledby="form-dialog-title"
                                     />
                                 </CardContent>
-
                             </Card>
-                              
                         </Grid>
                     </Grid>
                 </Grid>

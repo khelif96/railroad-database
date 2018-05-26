@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import registerUser from '../utils/auth'
+import {registerPassenger} from '../utils/auth';
 
 export default class FormDialog extends React.Component {
   constructor(props){
@@ -57,7 +57,7 @@ export default class FormDialog extends React.Component {
     const PREFFERED_CARD_NUMBER = this.state.preferred_card_number;
     const PREFFERED_BILLING_ADDRESS = this.state.preferred_billing_address;
 
-    registerUser(FNAME,LNAME,EMAIL,PASSWORD,PREFFERED_CARD_NUMBER,PREFFERED_BILLING_ADDRESS)
+    registerPassenger(FNAME,LNAME,EMAIL,PASSWORD,PREFFERED_CARD_NUMBER,PREFFERED_BILLING_ADDRESS)
     .then((api) => console.log(api))
     this.handleClose();
   };

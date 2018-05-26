@@ -9,6 +9,8 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import createBrowserHistory from 'history/createBrowserHistory'
+
 
 // material UI styling
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
@@ -32,6 +34,7 @@ const theme = createMuiTheme({
     },
   },
 });
+const customHistory = createBrowserHistory();
 
 class App extends Component {
   constructor(props){
@@ -44,7 +47,7 @@ class App extends Component {
   render() {
     const { classes } = this.props;
     return (
-    <Router>
+    <Router history={customHistory}>
       <MuiThemeProvider theme={theme}>
         <NavBar loggedIn ={this.state.loggedIn}/>
         <AppContainer> <Routes/> </AppContainer>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom'
+import {Route,Browser} from 'react-router-dom'
+
+
 
 import Reservation from './scenes/Reservation.js' 
 import Schedule from './scenes/Schedule.js'
@@ -9,7 +11,9 @@ import Trains from './scenes/Trains.js'
 import MyAccount from './scenes/MyAccount.js'
 import Login from './scenes/Login.js'
 
+
 class Routes extends Component {
+    
     render() {
         return (
             <div>
@@ -19,7 +23,8 @@ class Routes extends Component {
                 <Route exact path = '/Stations' component = {Stations} />
                 <Route exact path = '/Trains' component = {Trains} />
                 <Route exact path = '/MyAccount' component = {MyAccount} />
-                <Route exact path = '/Login' component = {Login} />
+                <Route exact path = '/Login' component = { (routeProps) => <Login {...routeProps} testCall = {this.props.isSignedIn} isTheUserSignedIn={this.props.userIsSignedIn} /> }
+ />
             </div>
         );
     }

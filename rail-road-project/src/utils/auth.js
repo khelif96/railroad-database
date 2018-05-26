@@ -1,9 +1,7 @@
 import axios from 'axios';
 const baseUrl = "http://localhost:3001/api";
 
-
-
-const registerUser = (FNAME,LNAME,EMAIL,PASSWORD,PREFFERED_CARD_NUMBER,PREFFERED_BILLING_ADDRESS) => {
+export const registerPassenger = (FNAME,LNAME,EMAIL,PASSWORD,PREFFERED_CARD_NUMBER,PREFFERED_BILLING_ADDRESS) => {
   return axios.post(baseUrl+"/auth/registerPassenger",{
         fname : FNAME,
         lname : LNAME,
@@ -15,4 +13,10 @@ const registerUser = (FNAME,LNAME,EMAIL,PASSWORD,PREFFERED_CARD_NUMBER,PREFFERED
   .then((response) => console.log(JSON.stringify(response.data.api_key) ))
   
 }
-export default registerUser;
+export const loginPassenger = (EMAIL,PASSWORD) => {
+  return axios.post(baseUrl+"/auth/loginPassenger",{
+        email : EMAIL,
+        password : PASSWORD
+  })
+  .then((response) => console.log(JSON.stringify(response.data.api_key) ))
+}

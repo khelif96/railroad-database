@@ -10,31 +10,60 @@ insert into passengers(passenger_id,fname,lname,email,password,preferred_card_nu
 
 DELETE FROM stations;
 
-insert into stations(station_id,station_name,station_symbol) values(1,"Boston, MA - South Station","BOS");
-insert into stations(station_id,station_name,station_symbol) values(2,"Boston, MA - Back Bay Station","BBY");
-insert into stations(station_id,station_name,station_symbol) values(3,"Route 128, MA","RTE");
-insert into stations(station_id,station_name,station_symbol) values(4,"Providence, RI","PVD");
-insert into stations(station_id,station_name,station_symbol) values(5,"Kingston, RI","KIN");
-insert into stations(station_id,station_name,station_symbol) values(6,"Westerly,RI","WLY");
-insert into stations(station_id,station_name,station_symbol) values(7,"Mystic, CT","MYS");
-insert into stations(station_id,station_name,station_symbol) values(8,"New London, CT","NLC");
-insert into stations(station_id,station_name,station_symbol) values(9,"Old Saybrook, CT","OSB");
-insert into stations(station_id,station_name,station_symbol) values(10,"New Haven, CT","NHV");
-insert into stations(station_id,station_name,station_symbol) values(11,"Bridgeport, CT","BRP");
-insert into stations(station_id,station_name,station_symbol) values(12,"Stamford, CT","STM");
-insert into stations(station_id,station_name,station_symbol) values(13,"New Rochelle, NY","NRO");
-insert into stations(station_id,station_name,station_symbol) values(14,"New York, NY - Penn Station","NYP");
-insert into stations(station_id,station_name,station_symbol) values(15,"Newark, NJ","NWK");
-insert into stations(station_id,station_name,station_symbol) values(16,"Newark Liberty Intl. Air., NJ","EWR");
-insert into stations(station_id,station_name,station_symbol) values(17,"Metro Park, NJ","MET");
-insert into stations(station_id,station_name,station_symbol) values(18,"Trenton, NJ","TRE");
-insert into stations(station_id,station_name,station_symbol) values(19,"Philadelphia, PA - 30th Street Station","PHL");
-insert into stations(station_id,station_name,station_symbol) values(20,"Wilmington, DE - J.R. Biden, Jr. Station","WIL");
-insert into stations(station_id,station_name,station_symbol) values(21,"Aberdeen, MD","ABE");
-insert into stations(station_id,station_name,station_symbol) values(22,"Baltimore, MD - Penn Station","BAL");
-insert into stations(station_id,station_name,station_symbol) values(23,"BWI Marshall Airport, MD","BWI");
-insert into stations(station_id,station_name,station_symbol) values(24,"New Carrollton, MD","NCR");
-insert into stations(station_id,station_name,station_symbol) values(25,"Washington, DC - Union Station","WAS");
+
+/* North Extension*/
+insert into stations(station_id,station_name,station_symbol) values(1,"St Albans", "VT","SAB");
+insert into stations(station_id,station_name,station_symbol) values(2,"Essex Junction", "VT","ESX");
+insert into stations(station_id,station_name,station_symbol) values(3,"Waterbury", "VT","WAB");
+insert into stations(station_id,station_name,station_symbol) values(4,"Montpelier", "VT","MPR");
+insert into stations(station_id,station_name,station_symbol) values(5,"Randolph", "VT","RPH");
+insert into stations(station_id,station_name,station_symbol) values(6,"White River Junction", "VT","WRJ");
+insert into stations(station_id,station_name,station_symbol) values(7,"Windsor", "VT","WNM");
+insert into stations(station_id,station_name,station_symbol) values(8,"Claremont", "NH","CLA");
+insert into stations(station_id,station_name,station_symbol) values(9,"Bellows Falls", "VT","BLF");
+insert into stations(station_id,station_name,station_symbol) values(10,"Brattleboro", "VT","BRA");
+insert into stations(station_id,station_name,station_symbol) values(11,"Greenfield", "MA","GFD");
+insert into stations(station_id,station_name,station_symbol) values(12,"Northampton", "MA","NHT");
+insert into stations(station_id,station_name,station_symbol) values(13,"Springfield", "MA","SPG");
+insert into stations(station_id,station_name,station_symbol) values(14,"Holyoke", "MA","HLK");	
+insert into stations(station_id,station_name,station_symbol) values(15,"Worcester", "MA","WOR");
+insert into stations(station_id,station_name,station_symbol) values(16,"Framingham", "MA","FRA");
+
+/* Given, but new station ids */
+insert into stations(station_id,station_name,station_symbol) values(17,"Boston, MA - Back Bay Station","BBY");
+insert into stations(station_id,station_name,station_symbol) values(18,"Route 128, MA","RTE");
+insert into stations(station_id,station_name,station_symbol) values(19,"Providence, RI","PVD");
+insert into stations(station_id,station_name,station_symbol) values(20,"Kingston, RI","KIN");
+insert into stations(station_id,station_name,station_symbol) values(21,"Westerly,RI","WLY");
+insert into stations(station_id,station_name,station_symbol) values(22,"Mystic, CT","MYS");
+insert into stations(station_id,station_name,station_symbol) values(23,"New London, CT","NLC");
+insert into stations(station_id,station_name,station_symbol) values(24,"Old Saybrook, CT","OSB");
+insert into stations(station_id,station_name,station_symbol) values(25,"New Haven, CT","NHV");
+insert into stations(station_id,station_name,station_symbol) values(26,"Bridgeport, CT","BRP");
+insert into stations(station_id,station_name,station_symbol) values(27,"Stamford, CT","STM");
+insert into stations(station_id,station_name,station_symbol) values(28,"New Rochelle, NY","NRO");
+insert into stations(station_id,station_name,station_symbol) values(29,"New York, NY - Penn Station","NYP");
+insert into stations(station_id,station_name,station_symbol) values(30,"Newark, NJ","NWK");
+insert into stations(station_id,station_name,station_symbol) values(31,"Newark Liberty Intl. Air., NJ","EWR");
+insert into stations(station_id,station_name,station_symbol) values(32,"Metro Park, NJ","MET");
+insert into stations(station_id,station_name,station_symbol) values(33,"Trenton, NJ","TRE");
+insert into stations(station_id,station_name,station_symbol) values(34,"Philadelphia, PA - 30th Street Station","PHL");
+insert into stations(station_id,station_name,station_symbol) values(35,"Wilmington, DE - J.R. Biden, Jr. Station","WIL");
+insert into stations(station_id,station_name,station_symbol) values(36,"Aberdeen, MD","ABE");
+insert into stations(station_id,station_name,station_symbol) values(37,"Baltimore, MD - Penn Station","BAL");
+insert into stations(station_id,station_name,station_symbol) values(38,"BWI Marshall Airport, MD","BWI");
+insert into stations(station_id,station_name,station_symbol) values(39,"New Carrollton, MD","NCR");
+insert into stations(station_id,station_name,station_symbol) values(40,"Washington, DC - Union Station","WAS");
+
+
+/* South Extension */
+insert into stations(station_id,station_name,station_symbol) values(41,"Burke", "VA","BCV");
+insert into stations(station_id,station_name,station_symbol) values(43,"Culpeper", "VA","CLP");
+insert into stations(station_id,station_name,station_symbol) values(44,"Charlottesville", "VA","CVS");
+insert into stations(station_id,station_name,station_symbol) values(45,"Lynchburg", "VA","LYH");
+insert into stations(station_id,station_name,station_symbol) values(46,"Roanoke", "VA","RNK");
+
+
 
 DELETE FROM segments;
 
@@ -62,37 +91,75 @@ insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(21,21,22,11
 insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(22,22,23,6.11);
 insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(23,23,24,6.58);
 insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(24,24,25,7.05);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(25,25,26,12.69);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(26,26,27,11.75);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(27,27,28,6.11);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(28,28,29,6.58);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(29,29,30,7.05);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(30,30,31,12.69);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(31,31,32,11.75);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(32,32,33,6.11);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(33,33,34,6.58);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(34,34,35,7.05);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(35,35,36,12.69);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(36,36,37,11.75);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(37,37,38,6.11);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(38,38,39,6.58);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(39,39,40,7.05);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(40,40,41,12.69);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(41,41,42,11.75);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(42,42,43,6.11);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(43,43,44,6.58);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(44,44,45,7.05);
+insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(45,45,46,12.69);
+	
 
 DELETE FROM trains;
 
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(1,1,25,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(2,1,25,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(3,1,25,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(4,1,25,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(5,1,25,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(6,1,25,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(7,1,25,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(8,1,25,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(9,1,25,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(10,1,25,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(11,1,25,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(12,1,25,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(13,1,25,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(14,1,25,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(15,1,25,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(16,1,25,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(17,1,25,0,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(18,1,25,0,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(19,1,25,0,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(20,1,25,0,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(21,1,25,0,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(22,1,25,0,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(23,1,25,1,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(24,1,25,1,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(25,1,25,1,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(26,1,25,1,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(27,1,25,1,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(28,1,25,1,0);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(1,1,46,0,0);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(2,1,46,1,0);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(3,1,46,0,1);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(4,1,46,1,1);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(5,1,46,0,2);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(6,1,46,1,2);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(7,1,46,0,3);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(8,1,46,1,3);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(9,1,46,0,4);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(10,1,46,1,4);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(11,1,46,0,5);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(12,1,46,1,5);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(13,1,46,0,6);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(14,1,46,1,6);
+
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(15,1,46,0,0);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(16,1,46,1,0);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(17,1,46,0,1);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(18,1,46,1,1);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(19,1,46,0,2);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(20,1,46,1,2);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(21,1,46,0,3);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(22,1,46,1,3);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(23,1,46,0,4);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(24,1,46,1,4);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(25,1,46,0,5);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(26,1,46,1,5);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(27,1,46,0,6);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(28,1,46,1,6);
+
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(29,1,46,0,0);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(30,1,46,1,0);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(31,1,46,0,1);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(32,1,46,1,1);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(33,1,46,0,2);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(34,1,46,1,2);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(35,1,46,0,3);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(36,1,46,1,3);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(37,1,46,0,4);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(38,1,46,1,4);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(39,1,46,0,5);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(40,1,46,1,5);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(41,1,46,0,6);
+insert into trains(train_id,train_start,train_end,train_direction,train_days) values(42,1,46,1,6);
 
 DELETE FROM stops_at;
 

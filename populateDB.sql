@@ -145,20 +145,6 @@ insert into trains(train_id,train_start,train_end,train_direction,train_days) va
 insert into trains(train_id,train_start,train_end,train_direction,train_days) values(27,1,46,0,6);
 insert into trains(train_id,train_start,train_end,train_direction,train_days) values(28,1,46,1,6);
 
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(29,1,46,0,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(30,1,46,1,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(31,1,46,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(32,1,46,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(33,1,46,0,2);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(34,1,46,1,2);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(35,1,46,0,3);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(36,1,46,1,3);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(37,1,46,0,4);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(38,1,46,1,4);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(39,1,46,0,5);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(40,1,46,1,5);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(41,1,46,0,6);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(42,1,46,1,6);
 
 DELETE FROM stops_at;
 

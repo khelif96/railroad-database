@@ -15,6 +15,7 @@ class Reservation extends Component {
             date: '',   //probably in JAVA date format NO TIME
             time : '',
             expandTrainSchedule : false,
+            stations : []
 
         };
 
@@ -33,7 +34,21 @@ class Reservation extends Component {
             expandTrainSchedule : !this.state.expandTrainSchedule,
         })
     }
-    
+
+    componentDidMount(){
+        fetch('http://localhost:3001/api/stations')
+        .then( result => {
+            return result.json()
+        }).then( data => {
+            let stations = data.map( (station) => {
+                return ( <option key={station.station_name}  value={station.station_id}>
+                  {station.station_name}
+                </option>)
+            })
+            this.setState({stations : stations})
+        })
+    }
+
 
     render() {
         /* Grid container acts as a whole row, and the item are its enteries */
@@ -43,25 +58,32 @@ class Reservation extends Component {
                 <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
                     <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
                         <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
-                            
+
                                 <Grid item xs>
                                     <Input
+                                      select
                                         required
                                         id="origin"
                                         label="From"
                                         value={this.state.origin}
                                         onChange={this.handleChange('origin')}
-                                    />
+                                    >
+                                    {this.state.stations}
+                                  </Input>
                                 </Grid>
                                 <Grid item xs>
-                                    
+
                                     <Input
                                         required
+                                        select
                                         id="destination"
                                         label="To"
                                         value={this.state.destination}
                                         onChange={this.handleChange('destination')}
-                                    />
+                                    >
+                                    {this.state.stations}
+
+                                  </Input>
                                 </Grid>
                         </Grid>
                         <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
@@ -93,18 +115,18 @@ class Reservation extends Component {
                                         onChange={this.handleChange('time')}
                                     />
                                 </Grid>
-                        
+
                         </Grid>
                         <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
                                 <Button type="submit" variant="raised" style={{color : 'white', backgroundColor : '#F44235'}}>Submit</Button>
                         </Grid>
                     </form>
-                    
 
-                    <Grid container justify="center" alignItems="center" spacing={16}> 
+
+                    <Grid container justify="center" alignItems="center" spacing={16}>
                         <Grid item xs>
-                            <AvailableTrains 
-                                expand={this.state.expandTrainSchedule} 
+                            <AvailableTrains
+                                expand={this.state.expandTrainSchedule}
                                 firstName={this.state.firstName}
                                 lastName={this.state.lastName}
                                 origin={this.state.origin}
@@ -116,7 +138,7 @@ class Reservation extends Component {
                     </Grid>
 
                 </Grid>
-                
+
             </Container>
         );
     }

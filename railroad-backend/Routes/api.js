@@ -9,7 +9,7 @@ const stations = require('../Controller/stations');
 const authpassengers = require('../Controller/auth/passenger')
 const passengers = require('../Controller/passenger');
 const calculateReservation = require('../Controller/reservation/calculateReservation');
-
+const createReservation = require('../Controller/reservation/createReservation');
 router.get('/', apiHome.getApi);
 
 router.get('/stations', stations.getStations);
@@ -20,5 +20,6 @@ router.post('/auth/loginPassenger',authpassengers.loginPassenger);
 router.post('/passengers/api_key', passengers.getPassengerByApikey);
 
 router.post('/reservation/calculateReservation' , calculateReservation.calculateReservation);
+router.post('/reservation/createReservation', createReservation.createReservation)
 router.use(apiHome.invalidPath);
 module.exports = router;

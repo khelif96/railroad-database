@@ -34,7 +34,8 @@ class Login extends Component {
 
         loginPassenger(EMAIL,PASSWORD)
         .then((api) => {
-            console.log(api)
+            const API_KEY = api.replace(/['"]+/g, '');
+            localStorage.setItem('API_KEY',API_KEY)
             this.props.history.push('/MyAccount')
         })
     }

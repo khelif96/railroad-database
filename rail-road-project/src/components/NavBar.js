@@ -87,17 +87,17 @@ class NavBar extends React.Component {
               </Button>
             </Link>
 
-            {this.props.loggedIn ? 
+            {localStorage.getItem("API_KEY") ? 
+              (<Link to='/MyAccount' className={classes.navItem}>
+              <Button  className={classes.navItem}>
+                My Account
+              </Button>
+              </Link>) :
               (<Link to='/Login' className={classes.navItem}>
                 <Button  className={classes.navItem}>
                   Login
                 </Button>
-              </Link>) :
-              (<Link to='/MyAccount' className={classes.navItem}>
-                  <Button  className={classes.navItem}>
-                    My Account
-                  </Button>
-              </Link>)}
+              </Link>) }
             
           </Toolbar>
         </AppBar>

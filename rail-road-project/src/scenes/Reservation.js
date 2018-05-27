@@ -52,7 +52,6 @@ class Reservation extends Component {
 
     render() {
         /* Grid container acts as a whole row, and the item are its enteries */
-        console.log(this.state.expandTrainSchedule + " from reservation")
         return (
             <Container>
                 <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>

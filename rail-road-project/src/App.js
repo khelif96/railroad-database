@@ -34,22 +34,16 @@ const theme = createMuiTheme({
     },
   },
 });
+
 const customHistory = createBrowserHistory();
 
 class App extends Component {
-  constructor(props){
-      super(props);
-      this.state = {
-          loggedIn : true,
-          api_key : "",
-      };
-  }
   render() {
     const { classes } = this.props;
     return (
     <Router history={customHistory}>
       <MuiThemeProvider theme={theme}>
-        <NavBar loggedIn ={this.state.loggedIn}/>
+        <NavBar/>
         <AppContainer> <Routes/> </AppContainer>
       </MuiThemeProvider>
     </Router>

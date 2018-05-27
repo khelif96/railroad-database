@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Input,Container} from '../styles/Reservation.style';
 import {Grid,Paper, Button, Typography} from 'material-ui';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
+import {getPassengerInfo} from '../utils/auth';
+
 
 class MyAccount extends Component {
 
@@ -11,7 +13,6 @@ class MyAccount extends Component {
             fname : "",
             lname : "",
             email : "",
-            password : "",
             preferred_card_number : "",
             preferred_billing_address : "",
 
@@ -30,9 +31,24 @@ class MyAccount extends Component {
             expandTrainSchedule : !this.state.expandTrainSchedule,
         })
     }
+
+    logOutUser = (event) => {
+         event.preventDefault();
+         localStorage.removeItem('API_KEY')
+         this.props.history.push('/')
+    }
     
     componentDidMount(){
-        
+        const API_KEY = localStorage.getItem('API_KEY')
+
+        getPassengerInfo(API_KEY)
+        .then( (userData => {
+            this.setState({
+                fname : userData[0].fname,
+                lname : userData[0].lname,
+                email : userData[0].email,
+            });
+        }))
         
     }
 
@@ -47,11 +63,11 @@ class MyAccount extends Component {
                                     <Typography>{this.state.fname}</Typography> 
                                     <Typography>{this.state.lname}</Typography> 
                                     <Typography>{this.state.email}</Typography> 
-                                    <Typography>{this.state.password}</Typography> 
-                                    <Typography>{this.state.preffered_card_number}</Typography> 
-                                    <Typography>{this.state.preffered_billing_number}</Typography> 
                                 </CardContent>
 
+                                <Button onClick={this.logOutUser} color="primary">
+                                        Log Out
+                                </Button>
                             </Card>
                               
                         </Grid>

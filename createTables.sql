@@ -48,15 +48,15 @@ CREATE TABLE segments (
 
 CREATE TABLE trains (
   train_id int(11) NOT NULL AUTO_INCREMENT,
-  train_start int(11) NOT NULL,
-  train_end int(11) NOT NULL,
+  train_n_end int(11) NOT NULL,
+  train_s_end int(11) NOT NULL,
   train_direction tinyint(1) DEFAULT NULL,
   train_days tinyint(1) DEFAULT NULL,
   PRIMARY KEY (train_id),
-  KEY train_start (train_start),
-  KEY train_end (train_end),
-  CONSTRAINT trains_ibfk_1 FOREIGN KEY (train_start) REFERENCES stations (station_id),
-  CONSTRAINT trains_ibfk_2 FOREIGN KEY (train_end) REFERENCES stations (station_id)
+  KEY train_n_end (train_n_end),
+  KEY train_s_end (train_s_end),
+  CONSTRAINT trains_ibfk_1 FOREIGN KEY (train_n_end) REFERENCES stations (station_id),
+  CONSTRAINT trains_ibfk_2 FOREIGN KEY (train_s_end) REFERENCES stations (station_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 CREATE TABLE seats_free (

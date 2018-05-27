@@ -57,10 +57,10 @@ insert into stations(station_id,station_name,station_symbol) values(40,"Washingt
 
 /* South Extension */
 insert into stations(station_id,station_name,station_symbol) values(41,"Burke, VA","BCV");
-insert into stations(station_id,station_name,station_symbol) values(43,"Culpeper, VA","CLP");
-insert into stations(station_id,station_name,station_symbol) values(44,"Charlottesville, VA","CVS");
-insert into stations(station_id,station_name,station_symbol) values(45,"Lynchburg, VA","LYH");
-insert into stations(station_id,station_name,station_symbol) values(46,"Roanoke, VA","RNK");
+insert into stations(station_id,station_name,station_symbol) values(42,"Culpeper, VA","CLP");
+insert into stations(station_id,station_name,station_symbol) values(43,"Charlottesville, VA","CVS");
+insert into stations(station_id,station_name,station_symbol) values(44,"Lynchburg, VA","LYH");
+insert into stations(station_id,station_name,station_symbol) values(45,"Roanoke, VA","RNK");
 
 
 
@@ -110,40 +110,39 @@ insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(41,41,42,11
 insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(42,42,43,6.11);
 insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(43,43,44,6.58);
 insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(44,44,45,7.05);
-insert into segments(segment_id,seg_n_end,seg_s_end,seg_fare) values(45,45,46,12.69);
 	
 
 DELETE FROM trains;
 
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(1,1,46,0,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(2,1,46,1,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(3,1,46,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(4,1,46,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(5,1,46,0,2);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(6,1,46,1,2);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(7,1,46,0,3);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(8,1,46,1,3);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(9,1,46,0,4);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(10,1,46,1,4);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(11,1,46,0,5);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(12,1,46,1,5);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(13,1,46,0,6);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(14,1,46,1,6);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(1,1,45,0,0);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(2,1,45,1,0);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(3,1,45,0,1);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(4,1,45,1,1);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(5,1,45,0,2);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(6,1,45,1,2);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(7,1,45,0,3);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(8,1,45,1,3);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(9,1,45,0,4);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(10,1,45,1,4);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(11,1,45,0,5);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(12,1,45,1,5);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(13,1,45,0,6);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(14,1,45,1,6);
 
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(15,1,46,0,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(16,1,46,1,0);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(17,1,46,0,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(18,1,46,1,1);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(19,1,46,0,2);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(20,1,46,1,2);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(21,1,46,0,3);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(22,1,46,1,3);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(23,1,46,0,4);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(24,1,46,1,4);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(25,1,46,0,5);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(26,1,46,1,5);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(27,1,46,0,6);
-insert into trains(train_id,train_start,train_end,train_direction,train_days) values(28,1,46,1,6);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(15,1,45,0,0);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(16,1,45,1,0);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(17,1,45,0,1);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(18,1,45,1,1);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(19,1,45,0,2);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(20,1,45,1,2);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(21,1,45,0,3);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(22,1,45,1,3);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(23,1,45,0,4);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(24,1,45,1,4);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(25,1,45,0,5);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(26,1,45,1,5);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(27,1,45,0,6);
+insert into trains(train_id,train_n_end,train_s_end,train_direction,train_days) values(28,1,45,1,6);
 
 
 DELETE FROM stops_at;
@@ -193,8 +192,7 @@ INSERT INTO stops_at VALUES (1,42,'21:37:00','21:42:00');
 INSERT INTO stops_at VALUES (1,43,'21:57:00','22:02:00');
 INSERT INTO stops_at VALUES (1,44,'22:17:00','22:22:00');
 INSERT INTO stops_at VALUES (1,45,'22:37:00','22:42:00');
-INSERT INTO stops_at VALUES (1,46,'22:57:00','23:02:00');
-INSERT INTO stops_at VALUES (2,46,'7:55:00','8:00:00');
+
 INSERT INTO stops_at VALUES (2,45,'8:06:00','8:11:00');
 INSERT INTO stops_at VALUES (2,44,'8:21:00','8:26:00');
 INSERT INTO stops_at VALUES (2,43,'8:51:00','8:56:00');
@@ -285,8 +283,7 @@ INSERT INTO stops_at VALUES (3,42,'0:37:00','0:42:00');
 INSERT INTO stops_at VALUES (3,43,'0:57:00','1:02:00');
 INSERT INTO stops_at VALUES (3,44,'1:17:00','1:22:00');
 INSERT INTO stops_at VALUES (3,45,'1:37:00','1:42:00');
-INSERT INTO stops_at VALUES (3,46,'1:57:00','2:02:00');
-INSERT INTO stops_at VALUES (4,46,'15:55:00','16:00:00');
+
 INSERT INTO stops_at VALUES (4,45,'16:06:00','16:11:00');
 INSERT INTO stops_at VALUES (4,44,'16:21:00','16:26:00');
 INSERT INTO stops_at VALUES (4,43,'16:51:00','16:56:00');
@@ -377,8 +374,7 @@ INSERT INTO stops_at VALUES (5,42,'8:37:00','8:42:00');
 INSERT INTO stops_at VALUES (5,43,'8:57:00','9:02:00');
 INSERT INTO stops_at VALUES (5,44,'9:17:00','9:22:00');
 INSERT INTO stops_at VALUES (5,45,'9:37:00','9:42:00');
-INSERT INTO stops_at VALUES (5,46,'9:57:00','10:02:00');
-INSERT INTO stops_at VALUES (6,46,'18:55:00','19:00:00');
+
 INSERT INTO stops_at VALUES (6,45,'19:06:00','19:11:00');
 INSERT INTO stops_at VALUES (6,44,'19:21:00','19:26:00');
 INSERT INTO stops_at VALUES (6,43,'19:51:00','19:56:00');
@@ -469,8 +465,7 @@ INSERT INTO stops_at VALUES (7,42,'11:37:00','11:42:00');
 INSERT INTO stops_at VALUES (7,43,'11:57:00','12:02:00');
 INSERT INTO stops_at VALUES (7,44,'12:17:00','12:22:00');
 INSERT INTO stops_at VALUES (7,45,'12:37:00','12:42:00');
-INSERT INTO stops_at VALUES (7,46,'12:57:00','13:02:00');
-INSERT INTO stops_at VALUES (8,46,'21:55:00','22:00:00');
+
 INSERT INTO stops_at VALUES (8,45,'22:06:00','22:11:00');
 INSERT INTO stops_at VALUES (8,44,'22:21:00','22:26:00');
 INSERT INTO stops_at VALUES (8,43,'22:51:00','22:56:00');
@@ -561,8 +556,7 @@ INSERT INTO stops_at VALUES (9,42,'19:04:00','19:09:00');
 INSERT INTO stops_at VALUES (9,43,'19:15:00','19:20:00');
 INSERT INTO stops_at VALUES (9,44,'19:26:00','19:31:00');
 INSERT INTO stops_at VALUES (9,45,'19:37:00','19:42:00');
-INSERT INTO stops_at VALUES (9,46,'19:48:00','19:53:00');
-INSERT INTO stops_at VALUES (10,46,'7:55:00','8:00:00');
+
 INSERT INTO stops_at VALUES (10,45,'8:15:00','8:20:00');
 INSERT INTO stops_at VALUES (10,44,'8:34:00','8:39:00');
 INSERT INTO stops_at VALUES (10,43,'8:52:00','8:57:00');
@@ -653,8 +647,7 @@ INSERT INTO stops_at VALUES (11,42,'22:04:00','22:09:00');
 INSERT INTO stops_at VALUES (11,43,'22:15:00','22:20:00');
 INSERT INTO stops_at VALUES (11,44,'22:26:00','22:31:00');
 INSERT INTO stops_at VALUES (11,45,'22:37:00','22:42:00');
-INSERT INTO stops_at VALUES (11,46,'22:48:00','22:53:00');
-INSERT INTO stops_at VALUES (12,46,'15:55:00','16:00:00');
+
 INSERT INTO stops_at VALUES (12,45,'16:15:00','16:20:00');
 INSERT INTO stops_at VALUES (12,44,'16:34:00','16:39:00');
 INSERT INTO stops_at VALUES (12,43,'16:52:00','16:57:00');
@@ -745,8 +738,7 @@ INSERT INTO stops_at VALUES (13,42,'6:04:00','6:09:00');
 INSERT INTO stops_at VALUES (13,43,'6:15:00','6:20:00');
 INSERT INTO stops_at VALUES (13,44,'6:26:00','6:31:00');
 INSERT INTO stops_at VALUES (13,45,'6:37:00','6:42:00');
-INSERT INTO stops_at VALUES (13,46,'6:48:00','6:53:00');
-INSERT INTO stops_at VALUES (14,46,'18:55:00','19:00:00');
+
 INSERT INTO stops_at VALUES (14,45,'19:15:00','19:20:00');
 INSERT INTO stops_at VALUES (14,44,'19:34:00','19:39:00');
 INSERT INTO stops_at VALUES (14,43,'19:52:00','19:57:00');
@@ -837,8 +829,7 @@ INSERT INTO stops_at VALUES (15,42,'9:04:00','9:09:00');
 INSERT INTO stops_at VALUES (15,43,'9:15:00','9:20:00');
 INSERT INTO stops_at VALUES (15,44,'9:26:00','9:31:00');
 INSERT INTO stops_at VALUES (15,45,'9:37:00','9:42:00');
-INSERT INTO stops_at VALUES (15,46,'9:48:00','9:53:00');
-INSERT INTO stops_at VALUES (16,46,'21:55:00','22:00:00');
+
 INSERT INTO stops_at VALUES (16,45,'22:15:00','22:20:00');
 INSERT INTO stops_at VALUES (16,44,'22:34:00','22:39:00');
 INSERT INTO stops_at VALUES (16,43,'22:52:00','22:57:00');
@@ -929,8 +920,7 @@ INSERT INTO stops_at VALUES (17,42,'23:07:00','23:12:00');
 INSERT INTO stops_at VALUES (17,43,'23:27:00','23:32:00');
 INSERT INTO stops_at VALUES (17,44,'23:47:00','23:52:00');
 INSERT INTO stops_at VALUES (17,45,'0:07:00','0:12:00');
-INSERT INTO stops_at VALUES (17,46,'0:27:00','0:32:00');
-INSERT INTO stops_at VALUES (18,46,'9:55:00','10:00:00');
+
 INSERT INTO stops_at VALUES (18,45,'10:06:00','10:11:00');
 INSERT INTO stops_at VALUES (18,44,'10:21:00','10:26:00');
 INSERT INTO stops_at VALUES (18,43,'10:51:00','10:56:00');
@@ -1021,8 +1011,7 @@ INSERT INTO stops_at VALUES (19,42,'3:07:00','3:12:00');
 INSERT INTO stops_at VALUES (19,43,'3:27:00','3:32:00');
 INSERT INTO stops_at VALUES (19,44,'3:47:00','3:52:00');
 INSERT INTO stops_at VALUES (19,45,'4:07:00','4:12:00');
-INSERT INTO stops_at VALUES (19,46,'4:27:00','4:32:00');
-INSERT INTO stops_at VALUES (20,46,'15:55:00','16:00:00');
+
 INSERT INTO stops_at VALUES (20,45,'16:06:00','16:11:00');
 INSERT INTO stops_at VALUES (20,44,'16:21:00','16:26:00');
 INSERT INTO stops_at VALUES (20,43,'16:51:00','16:56:00');
@@ -1113,8 +1102,6 @@ INSERT INTO stops_at VALUES (21,42,'9:07:00','9:12:00');
 INSERT INTO stops_at VALUES (21,43,'9:27:00','9:32:00');
 INSERT INTO stops_at VALUES (21,44,'9:47:00','9:52:00');
 INSERT INTO stops_at VALUES (21,45,'10:07:00','10:12:00');
-INSERT INTO stops_at VALUES (21,46,'10:27:00','10:32:00');
-INSERT INTO stops_at VALUES (22,46,'19:55:00','20:00:00');
 INSERT INTO stops_at VALUES (22,45,'20:06:00','20:11:00');
 INSERT INTO stops_at VALUES (22,44,'20:21:00','20:26:00');
 INSERT INTO stops_at VALUES (22,43,'20:51:00','20:56:00');
@@ -1205,8 +1192,7 @@ INSERT INTO stops_at VALUES (23,42,'20:34:00','20:39:00');
 INSERT INTO stops_at VALUES (23,43,'20:45:00','20:50:00');
 INSERT INTO stops_at VALUES (23,44,'20:56:00','21:01:00');
 INSERT INTO stops_at VALUES (23,45,'21:07:00','21:12:00');
-INSERT INTO stops_at VALUES (23,46,'21:18:00','21:23:00');
-INSERT INTO stops_at VALUES (24,46,'9:55:00','10:00:00');
+
 INSERT INTO stops_at VALUES (24,45,'10:15:00','10:20:00');
 INSERT INTO stops_at VALUES (24,44,'10:34:00','10:39:00');
 INSERT INTO stops_at VALUES (24,43,'10:52:00','10:57:00');
@@ -1297,8 +1283,7 @@ INSERT INTO stops_at VALUES (25,42,'0:34:00','0:39:00');
 INSERT INTO stops_at VALUES (25,43,'0:45:00','0:50:00');
 INSERT INTO stops_at VALUES (25,44,'0:56:00','1:01:00');
 INSERT INTO stops_at VALUES (25,45,'1:07:00','1:12:00');
-INSERT INTO stops_at VALUES (25,46,'1:18:00','1:23:00');
-INSERT INTO stops_at VALUES (26,46,'15:55:00','16:00:00');
+
 INSERT INTO stops_at VALUES (26,45,'16:15:00','16:20:00');
 INSERT INTO stops_at VALUES (26,44,'16:34:00','16:39:00');
 INSERT INTO stops_at VALUES (26,43,'16:52:00','16:57:00');
@@ -1389,8 +1374,7 @@ INSERT INTO stops_at VALUES (27,42,'6:34:00','6:39:00');
 INSERT INTO stops_at VALUES (27,43,'6:45:00','6:50:00');
 INSERT INTO stops_at VALUES (27,44,'6:56:00','7:01:00');
 INSERT INTO stops_at VALUES (27,45,'7:07:00','7:12:00');
-INSERT INTO stops_at VALUES (27,46,'7:18:00','7:23:00');
-INSERT INTO stops_at VALUES (28,46,'19:55:00','20:00:00');
+
 INSERT INTO stops_at VALUES (28,45,'20:15:00','20:20:00');
 INSERT INTO stops_at VALUES (28,44,'20:34:00','20:39:00');
 INSERT INTO stops_at VALUES (28,43,'20:52:00','20:57:00');

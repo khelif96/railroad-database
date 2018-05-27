@@ -3,7 +3,7 @@ import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-
 import Collapse from 'material-ui/transitions/Collapse';
 import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import TrainCard from './TrainCard';
 class AvailableTrains extends Component {
     constructor(props){
         super(props);
@@ -12,14 +12,14 @@ class AvailableTrains extends Component {
             lastName: '',
         }
     }
-    
+
     render() {
         return (
             <div>
                 <Card>
                     <CardHeader title="Available Trains"/>
                     <Collapse in={this.props.expand} timeout="auto" unmountOnExit>
-                        <CardContent> 
+                        <CardContent>
                             {this.props.firstName}
                             {this.props.lastName}
                             {this.props.origin}
@@ -28,8 +28,9 @@ class AvailableTrains extends Component {
                             {this.props.time}
                         </CardContent>
                     </Collapse>
+                    <TrainCard/>
                 </Card>
-                
+
             </div>
         );
     }

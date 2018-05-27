@@ -12,26 +12,34 @@ exports.findTrains = (req, res) => {
     var trains = [];
 
     if(origin < destination) { // If we are going south bound
-      con.query('select * from trains where train_direction=0;',function(error,results,fields){
+      con.query('select trains.train_id as TrainID, time_in from trains, stops_at where trains.train_id = stops_at.train_id && (station_id = '+ origin +' OR station_id = '+ destination +') && train_days='+ train_days +' && train_direction = 0 order by trains.train_id, time_in;',function(error,results,fields){
         rLen = results.length;
-        for (i = 0; i < rLen; i++) {
+        for (i = 0; i < rLen; i+=2) {
           console.log("i = " + i)
-          console.log(results[i].train_id);
+          console.log(results[i].TrainID);
           console.log(trains);
-          if(results[i].train_days == train_days && results[i].train_n_end <= origin && results[i].train_s_end >= destination)
-            trains.push(results[i].train_id);
+          
+          trains.push({
+            TrainID:   results[i].TrainID,
+            Departure: results[i].time_in,
+            Arrival:   results[i+1].time_in
+          });
         }
         res.json({trains});
       })
     }else if(origin > destination){
-      con.query('select * from trains where train_direction=1;',function(error,results,fields){
+      con.query('select trains.train_id as TrainID, time_in from trains, stops_at where trains.train_id = stops_at.train_id && (station_id = '+ origin +' OR station_id = '+ destination +') && train_days='+ train_days +' && train_direction = 1 order by trains.train_id, time_in;',function(error,results,fields){
         rLen = results.length;
-        for (i = 0; i < rLen; i++) {
+        for (i = 0; i < rLen; i+=2) {
           console.log("i = " + i)
-          console.log(results[i].train_id);
+          console.log(results[i].TrainID);
           console.log(trains);
-          if(results[i].train_days == train_days && results[i].train_s_end >= origin && results[i].train_n_end <= destination)
-            trains.push(results[i].train_id);
+          
+          trains.push({
+            TrainID:   results[i].TrainID,
+            Departure: results[i].time_in,
+            Arrival:   results[i+1].time_in
+          });
         }
       res.json({trains});
       })

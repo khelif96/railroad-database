@@ -6,14 +6,19 @@ const router = express.Router();
 
 const apiHome = require('../Controller/apiHome');
 const stations = require('../Controller/stations');
-const passengers = require('../Controller/auth/passenger')
+const authpassengers = require('../Controller/auth/passenger')
+const passengers = require('../Controller/passenger');
+const calculateReservation = require('../Controller/reservation/calculateReservation');
+
 router.get('/', apiHome.getApi);
 
 router.get('/stations', stations.getStations);
 
-router.post('/auth/registerPassenger',passengers.registerPassenger);
-router.post('/auth/loginPassenger',passengers.loginPassenger);
+router.post('/auth/registerPassenger',authpassengers.registerPassenger);
+router.post('/auth/loginPassenger',authpassengers.loginPassenger);
 
+router.post('/passengers/api_key', passengers.getPassengerByApikey);
 
+router.post('/reservation/calculateReservation' , calculateReservation.calculateReservation);
 router.use(apiHome.invalidPath);
 module.exports = router;

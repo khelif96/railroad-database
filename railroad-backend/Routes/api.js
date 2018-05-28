@@ -12,6 +12,7 @@ const calculateReservation = require('../Controller/reservation/calculateReserva
 const createReservation = require('../Controller/reservation/createReservation');
 const trains = require('../Controller/trains');
 const findTrains = require('../Controller/reservation/findTrains');
+const tripsPassenger = require('../Controller/tripsPassenger');
 
 router.get('/', apiHome.getApi);
 

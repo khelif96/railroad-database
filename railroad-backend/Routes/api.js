@@ -18,6 +18,8 @@ router.get('/', apiHome.getApi);
 router.get('/stations', stations.getStations);
 router.get('/trains', trains.getTrains);
 
+router.post('/tripsPassenger', tripsPassenger.getTripsPassenger);
+
 router.post('/auth/registerPassenger',authpassengers.registerPassenger);
 router.post('/auth/loginPassenger',authpassengers.loginPassenger);
 
@@ -27,5 +29,6 @@ router.post('/reservation/calculateReservation' , calculateReservation.calculate
 router.post('/reservation/createReservation', createReservation.createReservation)
 
 router.post('/reservation/findTrains' , findTrains.findTrains);
+
 router.use(apiHome.invalidPath);
 module.exports = router;

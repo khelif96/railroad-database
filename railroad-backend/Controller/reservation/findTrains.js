@@ -13,6 +13,7 @@ exports.findTrains = (req, res) => {
 
     if(origin < destination) { // If we are going south bound
       con.query('select trains.train_id as TrainID, time_in from trains, stops_at where trains.train_id = stops_at.train_id && (station_id = '+ origin +' OR station_id = '+ destination +') && train_days='+ train_days +' && train_direction = 0 order by trains.train_id, time_in;',function(error,results,fields){
+        if(error) res.status(500).json({error});
         rLen = results.length;
         for (i = 0; i < rLen; i+=2) {
           console.log("i = " + i)
@@ -29,6 +30,7 @@ exports.findTrains = (req, res) => {
       })
     }else if(origin > destination){
       con.query('select trains.train_id as TrainID, time_in from trains, stops_at where trains.train_id = stops_at.train_id && (station_id = '+ origin +' OR station_id = '+ destination +') && train_days='+ train_days +' && train_direction = 1 order by trains.train_id, time_in;',function(error,results,fields){
+        if(error) res.status(500).json({error});
         rLen = results.length;
         for (i = 0; i < rLen; i+=2) {
           console.log("i = " + i)

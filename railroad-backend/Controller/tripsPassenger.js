@@ -21,8 +21,8 @@ exports.getTripsPassenger = (req, res) => {
             TripID: results[i].trip_id,
             TraipDate: results[i].trip_date,
             TripFare: results[i].fare,
-            TripStart: results[i].trip_seg_start,
-            TripEnd: results[i].trip_seg_ends,
+            TripStart: results[i].trip_start,
+            TripEnd: results[i].trip_end,
             TripTrainID: results[i].trip_train_id,
             Reservation_id results[i].reservation_id
           });

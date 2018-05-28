@@ -21,7 +21,7 @@ export default class FormDialog extends React.Component {
       canRegister : false,
       open: false,
     };
-   
+
   }
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -48,7 +48,7 @@ export default class FormDialog extends React.Component {
     const checkField = (field) => { return !(field == "") };
     return fields.every(checkField);
   }
-  
+
   RegisterUser = (event) => {
     const FNAME = this.state.fname;
     const LNAME = this.state.lname;
@@ -106,6 +106,7 @@ export default class FormDialog extends React.Component {
               margin="dense"
               id="password"
               label="Password"
+              type="password"
               value={this.state.password}
               onChange={this.handleChange('password')}
               fullWidth

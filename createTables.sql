@@ -48,15 +48,15 @@ CREATE TABLE segments (
 
 CREATE TABLE trains (
   train_id int(11) NOT NULL AUTO_INCREMENT,
-  train_start int(11) NOT NULL,
-  train_end int(11) NOT NULL,
+  train_n_end int(11) NOT NULL,
+  train_s_end int(11) NOT NULL,
   train_direction tinyint(1) DEFAULT NULL,
   train_days tinyint(1) DEFAULT NULL,
   PRIMARY KEY (train_id),
-  KEY train_start (train_start),
-  KEY train_end (train_end),
-  CONSTRAINT trains_ibfk_1 FOREIGN KEY (train_start) REFERENCES stations (station_id),
-  CONSTRAINT trains_ibfk_2 FOREIGN KEY (train_end) REFERENCES stations (station_id)
+  KEY train_n_end (train_n_end),
+  KEY train_s_end (train_s_end),
+  CONSTRAINT trains_ibfk_1 FOREIGN KEY (train_n_end) REFERENCES stations (station_id),
+  CONSTRAINT trains_ibfk_2 FOREIGN KEY (train_s_end) REFERENCES stations (station_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 CREATE TABLE seats_free (
@@ -84,18 +84,18 @@ CREATE TABLE stops_at (
 CREATE TABLE trips (
   trip_id int(11) NOT NULL AUTO_INCREMENT,
   trip_date date NOT NULL,
-  trip_seg_start int(11) NOT NULL,
-  trip_seg_ends int(11) NOT NULL,
+  trip_start int(11) NOT NULL,
+  trip_end int(11) NOT NULL,
   fare decimal(7,2) NOT NULL,
   trip_train_id int(11) NOT NULL,
   reservation_id int(11) NOT NULL,
   PRIMARY KEY (trip_id),
-  KEY trip_seg_start (trip_seg_start),
-  KEY trip_seg_ends (trip_seg_ends),
+  KEY trip_start (trip_start),
+  KEY trip_end (trip_end),
   KEY trip_train_id (trip_train_id),
   KEY reservation_id (reservation_id),
-  CONSTRAINT trips_ibfk_1 FOREIGN KEY (trip_seg_start) REFERENCES segments (segment_id),
-  CONSTRAINT trips_ibfk_2 FOREIGN KEY (trip_seg_ends) REFERENCES segments (segment_id),
+  CONSTRAINT trips_ibfk_1 FOREIGN KEY (trip_start) REFERENCES stations (station_id),
+  CONSTRAINT trips_ibfk_2 FOREIGN KEY (trip_end) REFERENCES stations (station_id),
   CONSTRAINT trips_ibfk_3 FOREIGN KEY (trip_train_id) REFERENCES trains (train_id),
   CONSTRAINT trips_ibfk_4 FOREIGN KEY (reservation_id) REFERENCES reservations (reservation_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

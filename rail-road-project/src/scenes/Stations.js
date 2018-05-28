@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StationCard from '../components/StationCard.js';
+import {baseUrl} from '../utils/baseUrl';
 
 class Stations extends Component {
     constructor(props){
@@ -9,8 +10,8 @@ class Stations extends Component {
         }
     }
     componentDidMount(){
-        fetch('http://localhost:3001/api/stations')
-        .then( result => { 
+        fetch(baseUrl + '/stations')
+        .then( result => {
             return result.json()
         }).then( data => {
             let stations = data.map( (station) => {

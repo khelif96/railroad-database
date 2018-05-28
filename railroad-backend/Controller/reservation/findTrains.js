@@ -2,7 +2,7 @@
 var con = require('../../Utils/db');
 
 exports.findTrains = (req, res) => {
-  if(req.body.origin == undefined || req.body.origin < 1 || req.body.destination == undefined || req.body.destination < 1 
+  if(req.body.origin == undefined || req.body.origin < 1 || req.body.destination == undefined || req.body.destination < 1
     || req.body.train_days == undefined || req.body.train_days < 0 || req.body.train_days > 6) {
     res.status(400).json({error: "Missing or Incorrect field in request"})
   } else{

@@ -3,22 +3,29 @@ import {Input,Container} from '../styles/Reservation.style';
 import {Grid,Paper, Button} from 'material-ui';
 import AvailableTrains from '../components/AvailableTrains.js'
 
+import {getStations,getTrains,calculateReservation} from '../utils/reservation';
+import baseUrl from '../utils/baseUrl';
 class Reservation extends Component {
 
     constructor(props){
         super(props);
+
         this.state = {
             firstName: '',
             lastName: '',
             origin: '',
             destination: '',
-            date: '',   //probably in JAVA date format NO TIME
+            date: '2018-05-29',   //probably in JAVA date format NO TIME
             time : '',
             expandTrainSchedule : false,
-            stations : []
+            stations : [],
+            trains : [],
+            totalFare : 0
 
         };
-
+        this.getTrains = getTrains.bind(this);
+        this.getStations = getStations.bind(this);
+        this.calculateReservation = calculateReservation.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
     };
@@ -30,22 +37,46 @@ class Reservation extends Component {
     };
     handleSubmit = (event) => {
         event.preventDefault();
-        this.setState({
-            expandTrainSchedule : !this.state.expandTrainSchedule,
+        var day = new Date(this.state.date);
+        day = day.getDay();
+        this.getTrains(this.state.origin,this.state.destination,day)
+        .then(trains => {
+          // alert(JSON.stringify(trains.data.trains))
+          this.setState({
+              trains: trains.data.trains,
+              expandTrainSchedule : !this.state.expandTrainSchedule,
+          })
         })
+        .catch(error => {
+          alert(error);
+        })
+        this.calculateReservation(this.state.origin,this.state.destination)
+        .then(price => {
+          // alert(JSON.stringify(price.data.totalFare))
+          this.setState({
+            totalFare : price.data.totalFare
+          })
+        })
+        .catch(error => {
+          alert(error);
+        })
+
+
     }
 
     componentDidMount(){
-        fetch('http://localhost:3001/api/stations')
-        .then( result => {
-            return result.json()
-        }).then( data => {
-            let stations = data.map( (station) => {
-                return ( <option key={station.station_name}  value={station.station_id}>
+        this.getStations()
+        .then( stations => {
+            let stationChoices = stations.data.map( (station) => {
+                return (
+                <option key={station.station_name}  value={station.station_id}>
                   {station.station_name}
                 </option>)
             })
-            this.setState({stations : stations})
+            this.setState({stations : stationChoices})
+        })
+        .catch(error => {
+          alert(error)
         })
     }
 
@@ -126,12 +157,8 @@ class Reservation extends Component {
                         <Grid item xs>
                             <AvailableTrains
                                 expand={this.state.expandTrainSchedule}
-                                firstName={this.state.firstName}
-                                lastName={this.state.lastName}
-                                origin={this.state.origin}
-                                destination={this.state.destination}
-                                date={this.state.date}
-                                time={this.state.time}/>
+                                trains={this.state.trains}
+                                totalFare={this.state.totalFare}/>
 
                         </Grid>
                     </Grid>

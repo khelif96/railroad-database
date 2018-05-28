@@ -2,8 +2,8 @@
 var con = require('../../Utils/db');
 
 exports.calculateReservation = (req, res) => {
-  if(req.body.origin == undefined || req.body.destination == undefined) {
-    res.status(400).json({error: "Missing field in request"})
+  if(req.body.origin == undefined || req.body.origin < 1 || req.body.destination == undefined || req.body.destination < 1) {
+    res.status(400).json({error: "Missing or Incorrect field in request"})
   } else{
     var origin = req.body.origin;
     var destination = req.body.destination;
@@ -20,21 +20,17 @@ exports.calculateReservation = (req, res) => {
       console.log("i = " + i)
       console.log(results[i]);
       stops.push(results[i].seg_s_end);
-      if(results[i].seg_n_end !== destination){
-        totalFare += results[i].seg_fare
-      }
+      totalFare += results[i].seg_fare;
     }
 
   }else if(origin > destination){ // If we are going north bound
     console.log("Going North bound")
     console.log("Destination " + destination + " Origin " + origin)
-    for(let i = origin-1; i>destination-1; i--){
+    for(let i = origin-2; i>destination-2; i--){
       console.log("i = " + i)
       console.log(results[i]);
       stops.push(results[i].seg_n_end);
-      if(results[i].seg_n_end !== destination){
-        totalFare += results[i].seg_fare
-      }
+      totalFare += results[i].seg_fare;
     }
   }
   res.json({totalFare,stops});

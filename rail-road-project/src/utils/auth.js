@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = "http://localhost:3001/api";
+import {baseUrl} from './baseUrl';
 
 export const registerPassenger = (FNAME,LNAME,EMAIL,PASSWORD,PREFFERED_CARD_NUMBER,PREFFERED_BILLING_ADDRESS) => {
   return axios.post(baseUrl+"/auth/registerPassenger",{
@@ -11,7 +11,7 @@ export const registerPassenger = (FNAME,LNAME,EMAIL,PASSWORD,PREFFERED_CARD_NUMB
         preferred_billing_address : PREFFERED_BILLING_ADDRESS,
   })
   .then((response) => JSON.stringify(response.data.api_key))
-  
+
 }
 export const loginPassenger = (EMAIL,PASSWORD) => {
   return axios.post(baseUrl+"/auth/loginPassenger",{

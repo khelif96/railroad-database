@@ -32,7 +32,6 @@ class Login extends Component {
         this.setState({ error: false });
     };
     
-
     loginUser = (event) => {
         const EMAIL = this.state.email;
         const PASSWORD = this.state.password;
@@ -50,7 +49,7 @@ class Login extends Component {
 
     /*componentDidMount(){
         fetch('http://localhost:3001/api/stations')
-        .then( result => { 
+        .then( result => {
             return result.json()
         }).then( data => {
             this.setState({
@@ -62,7 +61,7 @@ class Login extends Component {
                 preferred_billing_address : data.preferred_billing_address,
             })
         })
-        
+
     }*/
 
     checkFields = (fields) => {
@@ -74,10 +73,10 @@ class Login extends Component {
         return (
             <Container>
                 <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
-                    <Grid container justify="center" alignItems="center" spacing={16}> 
+                    <Grid container justify="center" alignItems="center" spacing={16}>
                         <Grid item xs>
                             <Card>
-                                <CardContent> 
+                                <CardContent>
                                    <TextField
                                         required
                                         autoFocus
@@ -89,6 +88,7 @@ class Login extends Component {
                                         fullWidth
                                     />
                                     <TextField
+                                        type="password"
                                         required
                                         margin="dense"
                                         id="password"

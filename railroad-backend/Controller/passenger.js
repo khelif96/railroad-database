@@ -17,8 +17,9 @@ exports.getReservationsByPassengerId = (req,res) => {
   if(req.body.passenger_id == undefined){
     res.status(400).json({error: "Missing passenger_id in request"})
   }else{
-    let sqlStatement = 'select * from reservations where paying_passengar_id = "' + paying_passengar_id + '";'
-    con.query(sqlStatement,function(error,result,fields){
+    var paying_passenger_id  = req.body.passenger_id;
+    let sqlStatement = 'select * from reservations where paying_passenger_id = ' + paying_passenger_id + ';'
+    con.query(sqlStatement,function(error,results,fields){
       if(error) res.status(500).json({error: "Database error"})
       res.json(results);
     })

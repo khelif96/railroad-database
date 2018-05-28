@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Input,Container} from '../styles/Reservation.style';
-import {Grid,Paper, Button, Typography} from 'material-ui';
+import {Grid,Paper, Button, Typography, Dialog, DialogContent, DialogContentText, DialogTitle} from 'material-ui';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import RegisterDialog from '../components/RegisterDialog';
 import {loginPassenger} from '../utils/auth';
@@ -14,6 +14,7 @@ class Login extends Component {
             email : "",
             password : "",
             canLogin : false,
+            error : false, 
         }
     };
 
@@ -27,7 +28,11 @@ class Login extends Component {
         });
     };
 
+    handleClose = () => {
+        this.setState({ error: false });
+    };
     
+
     loginUser = (event) => {
         const EMAIL = this.state.email;
         const PASSWORD = this.state.password;
@@ -38,6 +43,9 @@ class Login extends Component {
             localStorage.setItem('API_KEY',API_KEY)
             this.props.history.push('/MyAccount')
         })
+        .catch((err) => {
+            this.setState({error :true})
+          });
     }
 
     /*componentDidMount(){
@@ -89,6 +97,22 @@ class Login extends Component {
                                         onChange={this.handleChange('password')}
                                         fullWidth
                                     />
+
+                                    { this.state.error && (
+                                        <Dialog
+                                            open={this.state.error}
+                                            onClose={this.handleClose}
+                                            aria-labelledby="alert-dialog-title"
+                                            aria-describedby="alert-dialog-description"
+                                        >
+                                            <DialogTitle id="alert-dialog-title"> Error </DialogTitle>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                Incorrect Email or Password. Please try again.
+                                                </DialogContentText>
+                                            </DialogContent>
+                                        </Dialog>)
+                                    }
                                       
                                     <Button disabled={!this.state.canLogin} onClick={this.loginUser} color="primary">
                                         Login

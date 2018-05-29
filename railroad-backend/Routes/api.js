@@ -14,10 +14,14 @@ const trains = require('../Controller/trains');
 const findTrains = require('../Controller/reservation/findTrains');
 const tripsPassenger = require('../Controller/tripsPassenger');
 
+const schedule = require('../Controller/schedule');
+
 router.get('/', apiHome.getApi);
 
 router.get('/stations', stations.getStations);
+router.get('/stations/:id', stations.getStationsById);
 router.get('/trains', trains.getTrains);
+router.get('/schedule', schedule.getSchedule);
 
 router.post('/tripsPassenger', tripsPassenger.getTripsPassenger);
 
@@ -25,7 +29,8 @@ router.post('/auth/registerPassenger',authpassengers.registerPassenger);
 router.post('/auth/loginPassenger',authpassengers.loginPassenger);
 
 router.post('/passengers/api_key', passengers.getPassengerByApikey);
-
+router.post('/passengers/reservations/id', passengers.getReservationsByPassengerId);
+router.post('/passengers/reservations/api_key', passengers.getReservationsByApi_key);
 router.post('/reservation/calculateReservation' , calculateReservation.calculateReservation);
 router.post('/reservation/createReservation', createReservation.createReservation)
 

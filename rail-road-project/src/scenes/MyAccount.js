@@ -3,6 +3,11 @@ import {Container,Account,AccountHeader} from '../styles/MyAccount.style';
 import {Grid,Paper, Button, Typography} from 'material-ui';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import {getPassengerInfo} from '../utils/auth';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow'
 
 
 class MyAccount extends Component {
@@ -63,18 +68,27 @@ class MyAccount extends Component {
                             <CardContent> 
 
                                 <Typography gutterBottom variant="headline" component="h4">
-                                    Email : 
+                                    Email : {this.state.email}
                                 </Typography>
-                                <Typography component="p" style={{padding : '0px 75px 0px 75px'}}>{this.state.email}</Typography> 
-
                                 <br/>
 
                                 <Typography gutterBottom variant="headline" component="h4">
                                     Reservations
                                 </Typography>
-                                <Typography component="p">
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                        <TableCell>TrainID</TableCell>
+                                        <TableCell>Departure Time</TableCell>
+                                        <TableCell>Arrival Time</TableCell>
+                                        <TableCell>Price</TableCell>
+                                        <TableCell>Reserve</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
                                     
-                                </Typography>
+                                </TableBody>
+                                </Table>
                             </CardContent>
                             <CardActions>
                                 <Button onClick={this.logOutUser} color="primary" >

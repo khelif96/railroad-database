@@ -15,7 +15,7 @@ class Reservation extends Component {
             lastName: '',
             origin: '',
             destination: '',
-            date: '2018-05-29',   //probably in JAVA date format NO TIME
+            date: "",   //probably in JAVA date format NO TIME
             time : '',
             expandTrainSchedule : false,
             stations : [],

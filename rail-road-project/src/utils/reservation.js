@@ -36,3 +36,11 @@ export const createReservation = (API_KEY,TRIP_DATE,TRIP_START,TRIP_END,TRIP_TRA
   .then((response) => "Successful registration of a reservation" )
   .catch((response) => "There was an error in your reservation, please try again" )
 }
+
+
+export const getReservationsByPassengerId = (API_KEY) => {
+  return axios.post(baseUrl + "/passengers/reservations/id" ,{
+      api_key : API_KEY
+  })
+  .then((response) => response )
+}

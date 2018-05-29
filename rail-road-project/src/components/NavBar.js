@@ -30,8 +30,8 @@ const styles = {
     color: 'white',
     fontSize: '30px',
   },
-  
-  
+
+
 };
 
 class NavBar extends React.Component {
@@ -58,9 +58,9 @@ class NavBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            
-            {localStorage.getItem("API_KEY") ? 
-              (<Link to='/MyAccount' className={classes.logo}>
+
+            {localStorage.getItem("API_KEY") ?
+              (<Link to='/' className={classes.logo}>
                 <Button  className={classes.logo}>
                   MRR
                 </Button>
@@ -82,7 +82,7 @@ class NavBar extends React.Component {
                 Schedule
               </Button>
             </Link>
-            
+
             <Link to='/Stations' className={classes.navItem}>
               <Button  className={classes.navItem}>
                 Stations
@@ -95,7 +95,7 @@ class NavBar extends React.Component {
               </Button>
             </Link>
 
-            {localStorage.getItem("API_KEY") ? 
+            {localStorage.getItem("API_KEY") ?
               (<Link to='/MyAccount' className={classes.navItem}>
               <Button  className={classes.navItem}>
                 My Account
@@ -106,7 +106,7 @@ class NavBar extends React.Component {
                   Login
                 </Button>
               </Link>) }
-            
+
           </Toolbar>
         </AppBar>
       </div>

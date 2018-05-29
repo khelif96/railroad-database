@@ -74,45 +74,40 @@ class MyAccount extends Component {
 
         getReservationsByPassengerId(API_KEY)
         .then( (userData) => {
-            const START = userData.data[0].trip_start;
-            const END = userData.data[0].trip_end;
-            const TRAINID = userData.data[0].train_id;
-            const TRIPDATE = new Date(userData.data[0].trip_date);
-            const DAY = TRIPDATE.getDay() - 1 ;
-            const FARE = userData.data[0].fare;
-            const RESERVATIONDATE = userData.data[0].reservation_date;
-            const TRIPID = userData.data[0].trip_id
+            console.log(userData);
+            for(var reservations = 0; reservations < userData.data.length; reservations ++){
+                
+                const START = userData.data[reservations].trip_start;
+                const END = userData.data[reservations].trip_end;
+                const TRAINID = userData.data[reservations].train_id;
+                const TRIPDATE = userData.data[reservations].trip_date;
+                let parseDay = new Date(userData.data[reservations].trip_date);
+                const DAY = parseDay.getDay() - 1 ;
+                const FARE = userData.data[reservations].fare;
+                const RESERVATIONDATE = userData.data[reservations].reservation_date;
+                const TRIPID = userData.data[reservations].trip_id
 
 
-            getTrains(START, END, DAY)
-            .then( (train) => {
-                for(var i =0; i < train.data.trains.length; i++ ){
-                    if(train.data.trains[i].TrainID === TRAINID){
-                        const ARRIVALTIME = train.data.trains[i].Arrival;
-                        const DEPARTURETIME = train.data.trains[i].Departure;
-                        console.log(START);
-                        console.log(END);
-                        console.log(TRAINID);
-                        console.log(TRIPDATE);
-                        console.log(FARE);
-                        console.log(RESERVATIONDATE);
-                        console.log(TRIPID);
-                        console.log(ARRIVALTIME);
-                        console.log(DEPARTURETIME);
-                        let reservationRow = this.createReservationRow(TRAINID, TRIPDATE, START, END, ARRIVALTIME, DEPARTURETIME, FARE, RESERVATIONDATE, TRIPID)
-                        let array =  this.state.reservations.push(reservationRow)
-
-                        console.log(reservationRow)
+                getTrains(START, END, DAY)
+                .then( (train) => {
+                    for(var i =0; i < train.data.trains.length; i++ ){
+                        if(train.data.trains[i].TrainID === TRAINID){
+                            const ARRIVALTIME = train.data.trains[i].Arrival;
+                            const DEPARTURETIME = train.data.trains[i].Departure;
                         
-                        this.setState({
-                            reservations : array,
-                        })
+                            let reservationRow = this.createReservationRow(TRAINID, TRIPDATE, START, END, ARRIVALTIME, DEPARTURETIME, FARE, RESERVATIONDATE, TRIPID)
+                            let array = this.state.reservations
+                            array.push(reservationRow)
+                
+                            this.setState({
+                                reservations : array,
+                            })
+                        }
                     }
-                }
-            })
-        })
+                })
 
-        
+            }
+        })   
     }
 
     render() {

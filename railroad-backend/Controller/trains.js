@@ -6,5 +6,5 @@ exports.getTrains = (req, res) => {
   if(error) res.status(500).json({error: "Database error"});
   res.json(results);
   })
-  
+
 };

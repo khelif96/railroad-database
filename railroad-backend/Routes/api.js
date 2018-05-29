@@ -25,6 +25,7 @@ router.post('/auth/registerPassenger',authpassengers.registerPassenger);
 router.post('/auth/loginPassenger',authpassengers.loginPassenger);
 
 router.post('/passengers/api_key', passengers.getPassengerByApikey);
+router.post('/passengers/reservations/id', passengers.getReservationsByPassengerId);
 
 router.post('/reservation/calculateReservation' , calculateReservation.calculateReservation);
 router.post('/reservation/createReservation', createReservation.createReservation)

@@ -107,6 +107,9 @@ class MyAccount extends Component {
                         }
                     }
                 })
+                .catch(error => {
+                  alert("Error while trying to getTrains")
+                })
 
 
 

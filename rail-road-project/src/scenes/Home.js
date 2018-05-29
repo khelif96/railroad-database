@@ -11,15 +11,22 @@ class Home extends Component {
                     MRR Reservation System
                   </Typography>
                   <p>By: Team 5</p>
-                  <p><a href="https://www.linkedin.com/in/mohamedkhelif/" >Mohamed Khelif</a></p>
-                  <p><a href="https://www.linkedin.com/in/heysatyam/" >Satyam Sharma</a></p>
-                  <p><a href="https://www.linkedin.com/in/abraham-villaroman-141618110/">Abraham Villaroman</a></p>
+                  <p><a href="https://www.linkedin.com/in/mohamedkhelif/" >Mohamed Khelif</a> (Full Stack)</p>
+                  <p><a href="https://www.linkedin.com/in/heysatyam/" >Satyam Sharma</a> (Database Backend)</p>
+                  <p><a href="https://www.linkedin.com/in/abraham-villaroman-141618110/">Abraham Villaroman</a> (Front end)</p>
                   <Typography color="primary" variant="display2" gutterBottom>About</Typography>
                   <Paper style={{padding:50}}>
                     <p>The railroad has been extended north to St. Albans, VT and south to Roanoke, VA by adding 21 more stations to the existing 24 stations. More trains have also been added to accommodate the new stations. There are now in-total 28 trains, of which 14 travel in either direction. Each train has an origin station, a destination station, and the days when it runs. To reserve a train to travel between two stations, the train has to be running on the date of the trip, traversing the segments of the stations in the correct direction, a free seat. The availability of the seat is calculated by checking if there are seats available for each segment of the trip for the given date and train. The fare of the reservation is calculated by adding the fare associated with each segment.</p>
                   </Paper>
+                  <Typography color='primary' variant="display2" gutterBottom>Project Roles</Typography>
+                  <Paper style={{padding:50}}>
+                    <b>Mohamed Khelif :</b> Designed and Built several API routes and defined logic to manipulate database tables, Also built out several UI features such as schedule which involved organizing train times by stations and individual trains and displaying them, Also built out logic for viewing available trains. <br/>
+                    <b>Satyam Sharma :</b>Administered DB enhancements, Created schemas and handled data entry for the tables. Worked on building and debugging the APIs.<br/>
+                    <b>Abraham Villaroman :</b> Designed and implemented UI in ReactJS developed several pages and integrated with backend API's <br/>
+
+                    </Paper>
                   <Typography color='primary' variant="display2" gutterBottom>TechStack</Typography>
-                  <Paper>
+                  <Paper style={{padding:50}}>
                     <Typography color='primary' variant="heading" gutterBottom>Frameworks</Typography>
                     <b>Frontend :</b> React<br/>
                     <b>Backend :</b> NodeJS<br/>

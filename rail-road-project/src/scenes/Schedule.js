@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import TimeTable from '../components/schedule/TimeTable';
-import {getSchedule} from '../utils/schedule';
+//import TimeTable from '../components/schedule/TimeTable';
+//import {getSchedule} from '../utils/schedule';
 class Schedule extends Component {
   constructor(props){
     super(props);
@@ -9,13 +9,7 @@ class Schedule extends Component {
     }
   }
   componentDidMount(){
-    getSchedule()
-    .then(schedule => {
-      this.setState({schedule: schedule.data})
-    })
-    .catch(error => {
-      alert(error)
-    })
+    
   }
   render() {
     return (
@@ -23,7 +17,7 @@ class Schedule extends Component {
         {this.state.schedule.map(function(station){
           return(<div>{station.station_id}</div>)
         })}
-        <TimeTable schedule={this.state.schedule}/>
+        
       </div>
     );
   }

@@ -3,6 +3,7 @@ import {Container,Account,AccountHeader} from '../styles/MyAccount.style';
 import {Grid,Paper, Button, Typography} from 'material-ui';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import {getPassengerInfo} from '../utils/auth';
+import {getReservationsByPassengerId} from '../utils/reservation'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -55,6 +56,12 @@ class MyAccount extends Component {
                 email : userData[0].email,
             });
         }))
+
+        getReservationsByPassengerId(API_KEY)
+        .then( (userData) => {
+            
+            console.log(userData.data[0])
+        })
         
     }
 

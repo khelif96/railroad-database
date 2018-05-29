@@ -72,9 +72,10 @@ class MyAccount extends Component {
             });
         }))
 
+
+
         getReservationsByPassengerId(API_KEY)
         .then( (userData) => {
-            console.log(userData);
             for(var reservations = 0; reservations < userData.data.length; reservations ++){
                 
                 const START = userData.data[reservations].trip_start;
@@ -105,6 +106,8 @@ class MyAccount extends Component {
                         }
                     }
                 })
+
+                
 
             }
         })   

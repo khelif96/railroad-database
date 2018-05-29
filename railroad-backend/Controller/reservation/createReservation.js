@@ -24,7 +24,7 @@ exports.createReservation = (req,res) => {
         res.status(500).json({error: "Could not find passenger in db"})
       }else{
         var reservationDate = new Date();
-        console.log(reservationDate)
+        // console.log(reservationDate)
       var createReservation = 'insert into reservations (reservation_date, paying_passenger_id,card_number, billing_address) values (' + `CURRENT_TIMESTAMP,"${passenger.passenger_id}","${passenger.preferred_card_number}","${passenger.preferred_billing_address}");`;
       con.query(createReservation,function(error,createReservationResponse,fields){
         if(error) res.status(500).json({error})
@@ -32,7 +32,7 @@ exports.createReservation = (req,res) => {
         var createTrip = 'insert into trips (trip_date,trip_start,trip_end,fare,trip_train_id,reservation_id) values (' + `"${trip_date}",${trip_start},${trip_end},${totalFare},${trip_train_id},${createReservationResponse.insertId});`;
         con.query(createTrip,function(error,createTripResponse,fields){
           if(error) res.status(500).json({error})
-          res.json({createTripResponse});
+          res.json({message: "Successfully created reservation",reservation_id: createReservationResponse.insertId});
         })
       })
 

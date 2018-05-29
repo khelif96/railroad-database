@@ -14,6 +14,6 @@ exports.getStationsById = (req,res) => {
   var stationQuery = 'select * from stations where station_id = ' + req.params.id + ';'
   con.query(stationQuery,function(err,result){
     if(err) res.status(500).json({error: "Database error"});
-    res.json(result);
+    res.json(result[0]);
   })
 }

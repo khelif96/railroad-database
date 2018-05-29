@@ -88,7 +88,6 @@ class Reservation extends Component {
                 <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
                     <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
                         <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
-
                                 <Grid item xs>
                                     <Input
                                       select
@@ -102,7 +101,6 @@ class Reservation extends Component {
                                   </Input>
                                 </Grid>
                                 <Grid item xs>
-
                                     <Input
                                         required
                                         select
@@ -112,7 +110,6 @@ class Reservation extends Component {
                                         onChange={this.handleChange('destination')}
                                     >
                                     {this.state.stations}
-
                                   </Input>
                                 </Grid>
                         </Grid>
@@ -148,23 +145,22 @@ class Reservation extends Component {
 
                         </Grid>
                         <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
-                                <Button type="submit" variant="raised" style={{color : 'white', backgroundColor : '#F44235'}}>Submit</Button>
+                            <Button type="submit" variant="raised" style={{color : 'white', backgroundColor : '#F44235'}}>Submit</Button>
                         </Grid>
                     </form>
-
-
                     <Grid container justify="center" alignItems="center" spacing={16}>
                         <Grid item xs>
                             <AvailableTrains
                                 expand={this.state.expandTrainSchedule}
                                 trains={this.state.trains}
-                                totalFare={this.state.totalFare}/>
+                                totalFare={this.state.totalFare}
+                                start={this.state.origin} 
+                                end={this.state.destination}
+                                date={this.state.date}/>
 
                         </Grid>
                     </Grid>
-
                 </Grid>
-
             </Container>
         );
     }

@@ -7,8 +7,7 @@ export const Container = styled.div`
     justify-content: center;
 `;
 
-export const Content = styled.div`
-`
+
 export const Input = styled(TextField)`
     width : 500px;    
 `;

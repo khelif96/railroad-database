@@ -29,7 +29,7 @@ class Login extends Component {
     };
 
     handleClose = () => {
-        this.setState({ error: false });
+        this.setState({ error: false, password : "" ,canLogin : false});
     };
     
     loginUser = (event) => {
@@ -44,7 +44,7 @@ class Login extends Component {
         })
         .catch((err) => {
             this.setState({error :true})
-          });
+        });
     }
 
     /*componentDidMount(){
@@ -72,7 +72,7 @@ class Login extends Component {
     render() {
         return (
             <Container>
-                <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
+                <Grid container justify="center" alignItems="center" spacing={16} style={{padding : '50px'}}>
                     <Grid container justify="center" alignItems="center" spacing={16}>
                         <Grid item xs>
                             <Card>
@@ -98,6 +98,7 @@ class Login extends Component {
                                         fullWidth
                                     />
 
+                                    <CardActions>
                                     { this.state.error && (
                                         <Dialog
                                             open={this.state.error}
@@ -120,9 +121,10 @@ class Login extends Component {
 
                                     <RegisterDialog
                                         open={this.state.openRegister}
-                                        onClose={ (event) => {this.setState({openRegister : false})}}
                                         aria-labelledby="form-dialog-title"
                                     />
+
+                                    </CardActions>
                                 </CardContent>
                             </Card>
                         </Grid>

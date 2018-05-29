@@ -32,7 +32,7 @@ class AvailableTrains extends Component {
                             <TableRow>
                               <TableCell>TrainID</TableCell>
                               <TableCell>Departure Time</TableCell>
-                              <TableCell >Arrival Time</TableCell>
+                              <TableCell>Arrival Time</TableCell>
                               <TableCell>Price</TableCell>
                               <TableCell>Reserve</TableCell>
                             </TableRow>
@@ -40,7 +40,7 @@ class AvailableTrains extends Component {
                           <TableBody>
                             {this.props.trains.map(train => {
                               return(
-                                <TrainRowSchedule totalFare={this.props.totalFare.toFixed(2)} train={train}/>
+                                <TrainRowSchedule start={this.props.start} end={this.props.end} date = {this.props.date} totalFare={this.props.totalFare.toFixed(2)} train={train}/>
                               )
                             })}
                           </TableBody>

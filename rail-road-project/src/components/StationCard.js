@@ -32,11 +32,6 @@ class StationCard extends React.Component {
         <Station  >
           <StationHeader
             title={ this.props.StationSymbol+ " : " + this.props.StationName}
-            action={
-              <IconButton onClick={this.handleExpandClick}>
-                <MoreVertIcon />
-              </IconButton>
-            }
           />
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <StationHeader>

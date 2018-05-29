@@ -12,6 +12,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {Train,TrainHeader} from '../styles/TrainCard.style'
+import {getStaionByID} from '../utils/stations';
 
 
 
@@ -20,6 +21,8 @@ class TrainCard extends React.Component {
         super(props);
         this.state = {
             expanded : false,
+            north : "",
+            south : ""
         }
     }
   handleExpandClick = () => {
@@ -51,7 +54,20 @@ class TrainCard extends React.Component {
         break;
       default:
         return "Not Running"
+    }
   }
+
+  componentDidMount(){
+
+    getStaionByID(this.props.train_n_end)
+    .then( (data) => { this.setState({
+        north : data.data.station_name
+    })});
+
+    getStaionByID(this.props.train_s_end)
+    .then( (data) => { this.setState({
+        south : data.data.station_name
+    })});
   }
 
   render() {
@@ -69,10 +85,10 @@ class TrainCard extends React.Component {
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography component="p">
-                Train North End: {this.props.train_n_end}
+                Train North End: {this.state.north}
               </Typography>
               <Typography component="p">
-                Train North End: {this.props.train_s_end}
+                Train South End: {this.state.south}
               </Typography>
               <Typography component="p">
               Train Direction: {this.props.train_direction === 0 ? "South Bound" : "North Bound"}

@@ -6,13 +6,25 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import {createReservation} from '../utils/reservation';
-
+import DialogContent from '@material-ui/core/DialogContent';
+import Dialog from '@material-ui/core/Dialog';
 
 import Card from 'material-ui/Card'
 class TrainRowSchedule extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      openError : false,
+      DialogText : "",
+    }
 
+  }
+
+  handleClose = (evt) => {
+    this.setState({
+      openError : false,
+      DialogText : ""
+    })
   }
 
   handleReservation = () => {
@@ -24,19 +36,34 @@ class TrainRowSchedule extends Component {
       const TOTAL_FARE =  this.props.totalFare;
 
       createReservation(API_KEY,TRIP_DATE,TRIP_START,TRIP_END,TRIP_TRAIN_ID,TOTAL_FARE)
-      .then (data => alert(data))
-
+      .then (data => (
+        this.setState({
+          openError : true,
+          DialogText : data
+        })
+      ))
+      .catch(data => 
+        this.setState({
+          openError : true,
+          DialogText : data
+        }))
   }
 
   render(){
     return(
+
       <TableRow>
         <TableCell><h1>{this.props.train.TrainID}</h1></TableCell>
         <TableCell><h1>{this.props.train.Departure}</h1></TableCell>
         <TableCell><h1>{this.props.train.Arrival}</h1></TableCell>
         <TableCell><h1 color="primary">${this.props.totalFare}</h1></TableCell>
         <TableCell><Button variant="raised" color="primary" onClick={(evt) => this.handleReservation()}>Reserve</Button></TableCell>
-
+      
+        <Dialog open={this.state.openError} onClose={this.handleClose} >
+          <DialogContent>
+            {this.state.DialogText}
+          </DialogContent>
+        </Dialog>
       </TableRow>
     )
   }

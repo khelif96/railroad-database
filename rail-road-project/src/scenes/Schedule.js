@@ -29,7 +29,9 @@ class Schedule extends Component {
   render() {
     return (
       <div>
-
+        {this.state.schedule.map(function(station){
+          return(<div>{station.station_id}</div>)
+        })}
         <TimeTable stations={this.state.stations} schedule={this.state.schedule}/>
       </div>
     );

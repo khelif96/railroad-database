@@ -6,7 +6,7 @@ exports.getTripsPassenger = (req, res) => {
     res.status(400).json({error: "Missing or Incorrect field in request"})
   } else {
   	var passengerID = req.body.passenger_id;
-  	con.query('select * from (select * from passengers where passengers.passenger_id = '+ passengerID +') as passengers, reservations,trips where passengers.passenger_id=reservations.paying_passenger_id && trips.reservation_id=reservations.reservation_id ;',function(error,results,fields){
+  	con.query('select * from (select * from passengers where passengers.passenger_id = ' + passengerID + ') as passengers, reservations,trips where passengers.passenger_id=reservations.paying_passenger_id && trips.reservation_id=reservations.reservation_id ;',function(error,results,fields){
   		if(error) res.status(500).json({error: "Database error"});
 
   		var trips = [];

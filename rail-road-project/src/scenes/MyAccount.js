@@ -83,7 +83,7 @@ class MyAccount extends Component {
                 const TRAINID = userData.data[reservations].train_id;
                 const TRIPDATE = userData.data[reservations].trip_date;
                 let parseDay = new Date(userData.data[reservations].trip_date);
-                const DAY = parseDay.getDay() - 1 ;
+                const DAY = parseDay.getDay();
                 console.log("TRIP " + DAY);
                 const FARE = userData.data[reservations].fare;
                 const RESERVATIONDATE = userData.data[reservations].reservation_date;

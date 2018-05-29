@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import {Route,Browser} from 'react-router-dom'
-
-
-
 import Reservation from './scenes/Reservation.js'
 import Schedule from './scenes/Schedule.js'
 import Stations from './scenes/Stations.js'

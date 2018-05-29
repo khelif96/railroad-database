@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import StationCard from '../components/StationCard.js';
 import {baseUrl} from '../utils/baseUrl';
+import Grid from '@material-ui/core/Grid';
+import {Container} from '../styles/StationCard.style'
+
 
 class Stations extends Component {
     constructor(props){
@@ -22,9 +25,15 @@ class Stations extends Component {
     }
     render() {
         return (
-            <div>
-                {this.state.stations}
-            </div>
+            <Container>
+                <Grid justify="center" container spacing={16}>
+                    {this.state.stations.map( (station) => (
+                    <Grid key={station.key} item>
+                        {station}
+                    </Grid>
+                    ))}
+                </Grid>
+            </Container>
         );
     }
 }

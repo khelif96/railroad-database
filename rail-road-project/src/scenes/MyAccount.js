@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-import {Input,Container} from '../styles/Reservation.style';
+import {Container,Account,AccountHeader} from '../styles/MyAccount.style';
 import {Grid,Paper, Button, Typography} from 'material-ui';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import {getPassengerInfo} from '../utils/auth';
-
+import {getReservationsByPassengerId,getTrains} from '../utils/reservation'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow'
+import ReservationRow from '../components/ReservationRow'
 
 class MyAccount extends Component {
 
@@ -15,9 +21,12 @@ class MyAccount extends Component {
             email : "",
             preferred_card_number : "",
             preferred_billing_address : "",
-
+            reservations : [],
+            reservation : null
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.getTrains = getTrains.bind(this);
+        this.getReservationsByPassengerId = getReservationsByPassengerId.bind(this);
     };
 
     handleChange = name => event => {
@@ -35,7 +44,20 @@ class MyAccount extends Component {
     logOutUser = (event) => {
          event.preventDefault();
          localStorage.removeItem('API_KEY')
-         this.props.history.push('/')
+         this.props.history.push('/Login')
+    }
+
+    createReservationRow(TRAINID, TRIPDATE, START, END, ARRIVALTIME, DEPARTURETIME, FARE, RESERVATIONDATE, TRIPID){
+        return (<ReservationRow 
+        TrainID={TRAINID} 
+        TripDate={TRIPDATE} 
+        From={START} 
+        To={END} 
+        FromTime={ARRIVALTIME} 
+        ToTime={DEPARTURETIME} 
+        Price={FARE} 
+        ReservationDate={RESERVATIONDATE} 
+        TripID={TRIPID}/>)
     }
     
     componentDidMount(){
@@ -49,28 +71,93 @@ class MyAccount extends Component {
                 email : userData[0].email,
             });
         }))
-        
+
+
+
+        getReservationsByPassengerId(API_KEY)
+        .then( (userData) => {
+            for(var reservations = 0; reservations < userData.data.length; reservations ++){
+                
+                const START = userData.data[reservations].trip_start;
+                const END = userData.data[reservations].trip_end;
+                const TRAINID = userData.data[reservations].train_id;
+                const TRIPDATE = userData.data[reservations].trip_date;
+                let parseDay = new Date(userData.data[reservations].trip_date);
+                const DAY = parseDay.getDay() - 1 ;
+                const FARE = userData.data[reservations].fare;
+                const RESERVATIONDATE = userData.data[reservations].reservation_date;
+                const TRIPID = userData.data[reservations].trip_id
+
+
+                getTrains(START, END, DAY)
+                .then( (train) => {
+                    for(var i =0; i < train.data.trains.length; i++ ){
+                        if(train.data.trains[i].TrainID === TRAINID){
+                            const ARRIVALTIME = train.data.trains[i].Arrival;
+                            const DEPARTURETIME = train.data.trains[i].Departure;
+                        
+                            let reservationRow = this.createReservationRow(TRAINID, TRIPDATE, START, END, ARRIVALTIME, DEPARTURETIME, FARE, RESERVATIONDATE, TRIPID)
+                            let array = this.state.reservations
+                            array.push(reservationRow)
+                
+                            this.setState({
+                                reservations : array,
+                            })
+                        }
+                    }
+                })
+
+                
+
+            }
+        })   
     }
 
     render() {
         return (
             <Container>
-                <Grid container justify="center" alignItems="center" spacing={16} style={{paddingBottom : '50px'}}>
-                    <Grid container justify="center" alignItems="center" spacing={16}> 
-                        <Grid item xs>
-                            <Card>
-                                <CardContent> 
-                                    <Typography>{this.state.fname}</Typography> 
-                                    <Typography>{this.state.lname}</Typography> 
-                                    <Typography>{this.state.email}</Typography> 
-                                </CardContent>
+                <Grid justify="center" container  spacing={40 } style={{padding : '50px'}}>
+                    <Grid item xs>
+                        <Account>
+                            <AccountHeader title={ this.state.fname+ " " + this.state.lname}/>
+                            <CardContent> 
+                                
+                                <Typography gutterBottom variant="headline" component="h4">
+                                    Email : {this.state.email}
+                                </Typography>
+                                <br/>
 
-                                <Button onClick={this.logOutUser} color="primary">
+                                <Typography gutterBottom variant="headline" component="h4">
+                                    Reservations
+                                </Typography>
+                                <div style={{overflowX : "scroll"}}>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                        <TableCell>Train ID</TableCell>
+                                        <TableCell>Trip Date</TableCell>
+                                        <TableCell>From</TableCell>
+                                        <TableCell>To</TableCell>
+                                        <TableCell>Departure Time</TableCell>
+                                        <TableCell>Arrival Time</TableCell>
+                                        <TableCell>Price</TableCell>
+                                        <TableCell>Reservation Date</TableCell>
+                                        <TableCell>Trip ID</TableCell>
+                                        </TableRow>
+                                        
+                                </TableHead>
+                                <TableBody>
+                                    {this.state.reservations}
+                                </TableBody>
+                                </Table>
+                                </div>
+                            </CardContent>
+                            <CardActions>
+                                <Button onClick={this.logOutUser} color="primary" >
                                         Log Out
                                 </Button>
-                            </Card>
-                              
-                        </Grid>
+                            </CardActions>
+                        </Account> 
                     </Grid>
                 </Grid>
             </Container>

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
+import { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
+import {Station,StationHeader} from '../styles/StationCard.style'
 import Collapse from 'material-ui/transitions/Collapse';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
@@ -28,29 +29,18 @@ class StationCard extends React.Component {
 
     return (
       <div>
-        <Card >
-          <CardHeader
-            title={this.props.StationName}
+        <Station  >
+          <StationHeader
+            title={ this.props.StationSymbol+ " : " + this.props.StationName}
           />
-          <CardContent>
-            <Typography component="p">
-              {this.props.StationSymbol}
-            </Typography>
-          </CardContent>
-          <CardActions disableActionSpacing>
-            <IconButton
-              onClick={this.handleExpandClick}
-              aria-expanded={this.state.expanded}
-              aria-label="Make a reservation"
-            >
-              <Typography paragraph> </Typography>
-            </IconButton>
-          </CardActions>
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-            </CardContent>
+            <StationHeader>
+              <Typography component="p">
+              Available Trains : 
+              </Typography>
+            </StationHeader>
           </Collapse>
-        </Card>
+        </Station>
       </div>
     );
   }

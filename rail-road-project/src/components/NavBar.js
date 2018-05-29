@@ -59,9 +59,17 @@ class NavBar extends React.Component {
         <AppBar position="static">
           <Toolbar>
             
-            <Link to='/' className={classes.logo}>              
-                MRR
-            </Link>
+            {localStorage.getItem("API_KEY") ? 
+              (<Link to='/MyAccount' className={classes.logo}>
+                <Button  className={classes.logo}>
+                  MRR
+                </Button>
+              </Link>) :
+              (<Link to='/Login' className={classes.logo}>
+                <Button  className={classes.logo}>
+                  MRR
+                </Button>
+              </Link>) }
 
             <Link to='/Reservation' className={classes.navItem}>
               <Button  className={classes.navItem}>

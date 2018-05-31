@@ -34,7 +34,7 @@ export const createReservation = (API_KEY,TRIP_DATE,TRIP_START,TRIP_END,TRIP_TRA
       totalFare : TOTAL_FARE
   })
   .then((response) => "Successful registration of a reservation" )
-  .catch((response) => "There was an error in your reservation, please try again" )
+  .catch((response) => "There was an error creating reservation. Make sure you are Logged In" )
 }
 
 

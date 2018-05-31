@@ -48,18 +48,18 @@ class MyAccount extends Component {
     }
 
     createReservationRow(TRAINID, TRIPDATE, START, END, ARRIVALTIME, DEPARTURETIME, FARE, RESERVATIONDATE, TRIPID){
-        return (<ReservationRow 
-        TrainID={TRAINID} 
-        TripDate={TRIPDATE} 
-        From={START} 
-        To={END} 
-        FromTime={ARRIVALTIME} 
-        ToTime={DEPARTURETIME} 
-        Price={FARE} 
-        ReservationDate={RESERVATIONDATE} 
+        return (<ReservationRow
+        TrainID={TRAINID}
+        TripDate={TRIPDATE}
+        From={START}
+        To={END}
+        FromTime={ARRIVALTIME}
+        ToTime={DEPARTURETIME}
+        Price={FARE}
+        ReservationDate={RESERVATIONDATE}
         TripID={TRIPID}/>)
     }
-    
+
     componentDidMount(){
         const API_KEY = localStorage.getItem('API_KEY')
 
@@ -77,13 +77,14 @@ class MyAccount extends Component {
         getReservationsByPassengerId(API_KEY)
         .then( (userData) => {
             for(var reservations = 0; reservations < userData.data.length; reservations ++){
-                
+
                 const START = userData.data[reservations].trip_start;
                 const END = userData.data[reservations].trip_end;
                 const TRAINID = userData.data[reservations].train_id;
                 const TRIPDATE = userData.data[reservations].trip_date;
                 let parseDay = new Date(userData.data[reservations].trip_date);
-                const DAY = parseDay.getDay() - 1 ;
+                const DAY = parseDay.getDay();
+                console.log("TRIP " + DAY);
                 const FARE = userData.data[reservations].fare;
                 const RESERVATIONDATE = userData.data[reservations].reservation_date;
                 const TRIPID = userData.data[reservations].trip_id
@@ -95,22 +96,25 @@ class MyAccount extends Component {
                         if(train.data.trains[i].TrainID === TRAINID){
                             const ARRIVALTIME = train.data.trains[i].Arrival;
                             const DEPARTURETIME = train.data.trains[i].Departure;
-                        
+
                             let reservationRow = this.createReservationRow(TRAINID, TRIPDATE, START, END, ARRIVALTIME, DEPARTURETIME, FARE, RESERVATIONDATE, TRIPID)
                             let array = this.state.reservations
                             array.push(reservationRow)
-                
+
                             this.setState({
                                 reservations : array,
                             })
                         }
                     }
                 })
+                .catch(error => {
+                  alert("Error while trying to getTrains")
+                })
 
-                
+
 
             }
-        })   
+        })
     }
 
     render() {
@@ -120,8 +124,8 @@ class MyAccount extends Component {
                     <Grid item xs>
                         <Account>
                             <AccountHeader title={ this.state.fname+ " " + this.state.lname}/>
-                            <CardContent> 
-                                
+                            <CardContent>
+
                                 <Typography gutterBottom variant="headline" component="h4">
                                     Email : {this.state.email}
                                 </Typography>
@@ -144,7 +148,7 @@ class MyAccount extends Component {
                                         <TableCell>Reservation Date</TableCell>
                                         <TableCell>Trip ID</TableCell>
                                         </TableRow>
-                                        
+
                                 </TableHead>
                                 <TableBody>
                                     {this.state.reservations}
@@ -157,7 +161,7 @@ class MyAccount extends Component {
                                         Log Out
                                 </Button>
                             </CardActions>
-                        </Account> 
+                        </Account>
                     </Grid>
                 </Grid>
             </Container>
